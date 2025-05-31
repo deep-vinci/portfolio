@@ -1,9 +1,11 @@
-import Image from "next/image";
+"use client";
+
+import { useEffect } from "react";
 
 export default function Home() {
-    return (
-        <p className="text-xl">
-            Redirecting to https://github.com/deep-vinci ..
-        </p>
-    );
+    useEffect(() => {
+        window.location.href = "https://github.com/deep-vinci";
+    }, []);
+
+    return <p>Redirecting to GitHub...</p>;
 }
