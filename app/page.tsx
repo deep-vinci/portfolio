@@ -1,4 +1,5 @@
 import { BlogPosts } from "app/components/posts";
+import Skills from "./components/skills";
 
 export default function Page() {
     return (
@@ -11,6 +12,7 @@ export default function Page() {
                 into full stack devlopment, AI and Systems engineering.`}
             </p>
             <div className="my-8">
+                {/* <Skills /> */}
                 <BlogPosts />
             </div>
         </section>
