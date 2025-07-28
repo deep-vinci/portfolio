@@ -13,6 +13,11 @@ export default function Page() {
                 {`I'm a Fullstack web devloper  and engineering student who builds, functional systems with a purpose. Currently i am deep diving
                 into full stack devlopment, AI and Systems engineering.`}
             </p>
+
+            <div className="my-8">
+                <Projects />
+            </div>
+
             <div className="my-8">
                 <Skills />
             </div>
