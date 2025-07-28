@@ -14,12 +14,12 @@ export default function Skills() {
     return (
         <>
             {" "}
-            <h2 className="text-2xl mb-4 font-extrabold">My Skills</h2>
+            <h2 className="text-xl mb-4 font-bold">Skills</h2>
             <div className="flex flex-wrap gap-2">
                 {techs.map((tech) => (
                     <button
                         key={tech}
-                        className="border-[#4d4d4d] border px-4 py-1 rounded-lg text-sm hover:bg-white hover:text-black"
+                        className="border-[#4d4d4d] border px-4 py-1 rounded-lg text-xs font-bold cursor-pointer hover:bg-white hover:text-black"
                     >
                         {tech}
                     </button>
