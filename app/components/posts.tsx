@@ -6,7 +6,7 @@ export function BlogPosts() {
 
     return (
         <div>
-            <h2 className="text-2xl mb-4 font-extrabold">My Blogs</h2>
+            <h2 className="text-xl mb-4 font-bold">Blogs</h2>
             {allBlogs
                 .sort((a, b) => {
                     if (
