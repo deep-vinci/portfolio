@@ -1,4 +1,3 @@
-// import { BlogPosts } from "app/components/posts";
 import Projects from "app/components/projects";
 
 export const metadata = {
