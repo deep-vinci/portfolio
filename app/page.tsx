@@ -9,7 +9,7 @@ export default function Page() {
             <h1 className="mb-8 text-5xl font-extrabold tracking-tighter">
                 Hi, deepvinci here
             </h1>
-            <p className="mb-4 text-md text-[#bcbcbc]">
+            <p className="mb-4 text-md text-gray-700 dark:text-[#bcbcbc]">
                 {`I'm a Fullstack web devloper  and engineering student who builds, functional systems with a purpose. Currently i am deep diving
                 into full stack devlopment, AI and Systems engineering.`}
             </p>
@@ -22,9 +22,9 @@ export default function Page() {
                 <Skills />
             </div>
 
-            <div className="my-8">
+            {/* <div className="my-8">
                 <BlogPosts />
-            </div>
+            </div> */}
 
             <div className="my-8">
                 <Education />
