@@ -10,7 +10,9 @@ export default function Education() {
                         Computer Science and Engineering
                     </p>
                 </div>
-                <div className="text-[#a3a3a3] ml-auto mr-0">2024 - 2028</div>
+                <div className="text-gray-700 dark:text-[#bcbcbc] ml-auto mr-0">
+                    2024 - 2028
+                </div>
             </div>
         </>
     );

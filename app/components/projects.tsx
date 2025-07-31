@@ -28,9 +28,11 @@ export default function Projects() {
                     ></div>
                     <div>
                         <h3 className="font-bold">{project.name}</h3>
-                        <p className="text-sm text-[#a3a3a3]">{project.desc}</p>
+                        <p className="text-sm text-gray-700 dark:text-[#bcbcbc]">
+                            {project.desc}
+                        </p>
                     </div>
-                    <div className=" shrink-0 text-[#a3a3a3] ml-auto mr-0">
+                    <div className=" shrink-0 text-gray-700 dark:text-[#bcbcbc] ml-auto mr-0">
                         {project.date}
                         {/* <button className="bg-[#0091004c] text-[#009100] font-bold px-3 py-1 text-sm rounded-full">
                             more
