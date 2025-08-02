@@ -14,7 +14,7 @@ const navItems = {
 
 export function Navbar() {
     return (
-        <aside className="-ml-[8px] mb-16 sticky top-0 dark:bg-black bg-white tracking-tight">
+        <aside className="-ml-[10px] mb-16 sticky top-0 dark:bg-black bg-white tracking-tight">
             <div className="lg:sticky  lg:top-20">
                 <nav
                     className="flex flex-row items-start relative px-0 pb-0 fade md:overflow-auto scroll-pr-6 md:relative"
