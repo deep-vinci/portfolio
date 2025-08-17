@@ -37,7 +37,7 @@ export default function Socials() {
                         target="_blank"
                         href="https://github.com/deep-vinci"
                     >
-                        <ArrowIcon />
+                        {/* <ArrowIcon /> */}
                         <p className="ml-2 h-7">github</p>
                     </a>
                 </li>
@@ -48,7 +48,7 @@ export default function Socials() {
                         target="_blank"
                         href="https://leetcode.com/u/deepvinci"
                     >
-                        <ArrowIcon />
+                        {/* <ArrowIcon /> */}
                         <p className="ml-2 h-7">leetcode</p>
                     </a>
                 </li>
@@ -59,7 +59,7 @@ export default function Socials() {
                         target="_blank"
                         href="https://linkedin.com/in/deepakwork"
                     >
-                        <ArrowIcon />
+                        {/* <ArrowIcon /> */}
                         <p className="ml-2 h-7">linkedin</p>
                     </a>
                 </li>
