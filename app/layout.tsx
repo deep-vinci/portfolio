@@ -4,10 +4,8 @@ import { GeistMono } from "geist/font/mono";
 import { Navbar } from "./components/nav";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
-import { baseUrl } from "./sitemap";
 
 export const metadata = {
-    metadataBase: new URL(baseUrl),
     title: {
         default: "deepvinci's Portfolio",
         template: "%s | deepvinci's Portfolio",
@@ -16,7 +14,7 @@ export const metadata = {
     openGraph: {
         title: "deepvinci's Portfolio",
         description: "This is my portfolio.",
-        url: baseUrl,
+        url: "baseUrl",
         siteName: "Shivam's Portfolio",
         locale: "en_US",
         type: "website",
