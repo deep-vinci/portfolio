@@ -1,5 +1,7 @@
 export default function Skills() {
     const techs = [
+        "Docker",
+        "Prometheus",
         "Nodejs",
         "React",
         "Nextjs",
