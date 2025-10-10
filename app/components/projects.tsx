@@ -1,12 +1,22 @@
-const projectInfo = [
+type ProjectInfo = {
+    name: string
+    url: string
+    desc: string
+    logo: string
+    date: string
+}
+
+const projectInfo: ProjectInfo[] = [
     {
         name: "Campus find",
+        url: "https://paruluniversity-map.vercel.app",
         desc: "University campus map, with intelligent k-shortest routing, location search, dynamic event info for student/visitor navigation.",
         logo: "/campusfind.png",
         date: "2025",
     },
     {
         name: "Gitview",
+        url: "https://gitview.deepvinci.me/",
         desc: "3D visualization tool that transforms your GitHub contribution graph into an interactive, visually engaging experience",
         logo: "/gitview.png",
         date: "2025",
@@ -20,7 +30,8 @@ export default function Projects() {
             {projectInfo.map((project) => (
                 <div
                     key={project.name}
-                    className="flex justify-start gap-4 my-4"
+                    className="flex justify-start gap-4 my-4 cursor-pointer hover:scale-101 duration-200    "
+                    onClick={() => window.open(project.url, "_blank")}
                 >
                     <div
                         className="shrink-0 size-12 bg-cover rounded-lg"
@@ -39,7 +50,8 @@ export default function Projects() {
                         </button> */}
                     </div>
                 </div>
-            ))}
+            ))
+            }
         </>
     );
 }
