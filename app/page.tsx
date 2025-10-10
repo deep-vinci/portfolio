@@ -43,6 +43,7 @@ export default function Page() {
             <div className="my-8">
                 <Achievements />
             </div>
+
             <div className="my-8">
                 <Skills />
             </div>

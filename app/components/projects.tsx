@@ -1,3 +1,5 @@
+"use client"
+
 type ProjectInfo = {
     name: string
     url: string
@@ -32,6 +34,7 @@ export default function Projects() {
                     key={project.name}
                     className="flex justify-start gap-4 my-4 cursor-pointer hover:scale-101 duration-200    "
                     onClick={() => window.open(project.url, "_blank")}
+
                 >
                     <div
                         className="shrink-0 size-12 bg-cover rounded-lg"
