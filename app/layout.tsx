@@ -15,7 +15,7 @@ export const metadata = {
         title: "deepvinci's Portfolio",
         description: "This is my portfolio.",
         url: "baseUrl",
-        siteName: "Shivam's Portfolio",
+        siteName: "deepvinci's Portfolio",
         locale: "en_US",
         type: "website",
     },
