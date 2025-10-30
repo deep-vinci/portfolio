@@ -17,6 +17,13 @@ const projectInfo: ProjectInfo[] = [
         date: "2025",
     },
     {
+        name: "The Hundred",
+        url: "https://the-hundred-nine.vercel.app",
+        desc: "GitHub-style contribution graph web app that tracks daily habits, assigns weighted scores (out of 100) to tasks, and visualizes overall daily performance.",
+        logo: "/thehundred.jpeg",
+        date: "2025",
+    },
+    {
         name: "Gitview",
         url: "https://gitview.deepvinci.me/",
         desc: "3D visualization tool that transforms your GitHub contribution graph into an interactive, visually engaging experience",
