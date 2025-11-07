@@ -2,7 +2,7 @@
 
 type ProjectInfo = {
     name: string
-    url: string
+    url?: string
     desc: string
     logo: string
     date: string
@@ -30,6 +30,12 @@ const projectInfo: ProjectInfo[] = [
         logo: "/gitview.png",
         date: "2025",
     },
+    {
+        name: "Medical Emergency Service App",
+        desc: "An Android application designed to provide immediate assistance during medical emergencies, PHC for minor issues, CHC for common ailments or District Hospital for emergencies.",
+        logo: "/mes.png",
+        date: "2025",
+    },
 ];
 
 export default function Projects() {
@@ -40,7 +46,11 @@ export default function Projects() {
                 <div
                     key={project.name}
                     className="flex justify-start gap-4 my-4 cursor-pointer hover:scale-101 duration-200    "
-                    onClick={() => window.open(project.url, "_blank")}
+                    onClick={() => {
+                        if (project.url) {
+                            window.open(project.url, "_blank");
+                        }
+                    }}
 
                 >
                     <div
