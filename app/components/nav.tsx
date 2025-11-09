@@ -4,12 +4,15 @@ import Socials from "./socials";
 const navItems = {
     "/": {
         name: "home",
+        external: false,
     },
     "/projects": {
         name: "projects",
+        external: false,
     },
     "/blog": {
         name: "blog",
+        external: false,
     },
     "/resume.pdf": {
         name: "resume",
@@ -27,14 +30,14 @@ export function Navbar() {
                 >
                     <div className="flex flex-row flex-wrap items-center gap-1 md:gap-0 md:space-x-0 pr-2 md:pr-10">
                         {Object.entries(navItems).map(([path, { name, external }]) => {
-                            if (external) {
+                            if (external === true) {
                                 return (
                                     <a
                                         key={path}
                                         href={path}
                                         target="_blank"
                                         rel="noopener noreferrer"
-                                        className="transition-all hover:text-neutral-800 dark:hover:text-neutral-200 flex align-middle relative py-1 px-2 text-sm md:text-base"
+                                        className="transition-all hover:text-neutral-800 dark:hover:text-neutral-200 flex items-center justify-center relative py-1.5 px-3 text-sm md:text-base rounded-md border border-neutral-300 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-900 hover:bg-neutral-100 dark:hover:bg-neutral-800 hover:border-neutral-400 dark:hover:border-neutral-600 font-medium"
                                     >
                                         {name}
                                     </a>
