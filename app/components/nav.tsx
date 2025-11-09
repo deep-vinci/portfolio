@@ -14,9 +14,9 @@ const navItems = {
         name: "blog",
         external: false,
     },
-    "/resume.pdf": {
+    "/resume": {
         name: "resume",
-        external: true,
+        external: false,
     },
 };
 
@@ -43,11 +43,16 @@ export function Navbar() {
                                     </a>
                                 );
                             }
+                            const isResume = path === "/resume";
                             return (
                                 <Link
                                     key={path}
                                     href={path}
-                                    className="transition-all hover:text-neutral-800 dark:hover:text-neutral-200 flex align-middle relative py-1 px-2 text-sm md:text-base"
+                                    className={`transition-all hover:text-neutral-800 dark:hover:text-neutral-200 flex align-middle relative text-sm md:text-base ${
+                                        isResume
+                                            ? "items-center justify-center py-1.5 px-3 rounded-md border border-neutral-300 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-900 hover:bg-neutral-100 dark:hover:bg-neutral-800 hover:border-neutral-400 dark:hover:border-neutral-600 font-medium"
+                                            : "py-1 px-2"
+                                    }`}
                                 >
                                     {name}
                                 </Link>
