@@ -51,6 +51,17 @@ export default function Socials() {
                         <p className="h-7 text-sm md:text-base">linkedin</p>
                     </a>
                 </li>
+
+                <li>
+                    <a
+                        className="flex items-center transition-all hover:text-neutral-800 dark:hover:text-neutral-100 py-1 px-1"
+                        rel="noopener noreferrer"
+                        target="_blank"
+                        href="https://leetcode.com/u/deepvinci"
+                    >
+                        <p className="h-7 text-sm md:text-base">leetcode</p>
+                    </a>
+                </li>
             </ul>
             {/* <p className="mt-8 text-neutral-600 dark:text-neutral-300">
                 © {new Date().getFullYear()} MIT Licensed
