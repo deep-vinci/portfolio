@@ -63,6 +63,7 @@ export default function Projects() {
     const hoverRef = useRef<HTMLDivElement>(null)
     const imagesRef = useRef<HTMLDivElement>(null)
     const [imagesWidth, setImagesWidth] = useState<number | null>(null)
+    const [loadedImages, setLoadedImages] = useState<Set<string>>(new Set())
 
     const handleMouseEnter = (projectId: number, project: ProjectInfo) => {
         if (project.images && project.images.length > 0) {
@@ -103,6 +104,28 @@ export default function Projects() {
             setImagesWidth(null)
         }
     }
+
+    // Preload all project images on component mount and track when they're loaded
+    useEffect(() => {
+        const preloadImages = () => {
+            projectInfo.forEach((project) => {
+                if (project.images && project.images.length > 0) {
+                    project.images.forEach((imageSrc) => {
+                        const img = new Image()
+                        img.onload = () => {
+                            setLoadedImages((prev) => new Set(prev).add(imageSrc))
+                        }
+                        img.onerror = () => {
+                            // Still mark as "loaded" to avoid infinite waiting on broken images
+                            setLoadedImages((prev) => new Set(prev).add(imageSrc))
+                        }
+                        img.src = imageSrc
+                    })
+                }
+            })
+        }
+        preloadImages()
+    }, [])
 
     // Measure images width when they load
     useEffect(() => {
@@ -155,7 +178,19 @@ export default function Projects() {
             {/* Hover tooltip - displays images for projects that have them */}
             {hoverState.projectId !== null && (() => {
                 const hoveredProject = projectInfo.find(p => p.id === hoverState.projectId)
-                return hoveredProject?.images && hoveredProject.images.length > 0 ? (
+                if (!hoveredProject?.images || hoveredProject.images.length === 0) {
+                    return null
+                }
+                
+                // Check if all images for this project are loaded
+                const allImagesLoaded = hoveredProject.images.every(image => loadedImages.has(image))
+                
+                // Only show tooltip if all images are loaded
+                if (!allImagesLoaded) {
+                    return null
+                }
+                
+                return (
                     <div
                         ref={hoverRef}
                         className={`fixed pointer-events-none z-50 bg-white dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 rounded-lg shadow-lg p-3 transition-opacity duration-200 ease-out ${
@@ -207,7 +242,7 @@ export default function Projects() {
                             </div>
                         </div>
                     </div>
-                ) : null
+                )
             })()}
         </>
     );
