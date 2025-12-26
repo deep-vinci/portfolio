@@ -14,9 +14,9 @@ const navItems = {
         name: "blog",
         external: false,
     },
-    "/resume": {
+    "/resume-meta.pdf": {
         name: "resume",
-        external: false,
+        external: true,
     },
 };
 
