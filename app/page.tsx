@@ -32,7 +32,7 @@ export default function Page() {
                 />
             </motion.div>
             <p className="mb-4 text-md text-gray-700 dark:text-[#bcbcbc]">
-                {`I'm a Fullstack web devloper  and engineering student who builds, functional systems with a purpose. Currently i am deep diving
+                {`I'm a Android and Fullstack web devloper  and engineering student who builds, functional systems with a purpose. Currently i am deep diving
                 into full stack devlopment, AI and Systems engineering.`}
             </p>
 
