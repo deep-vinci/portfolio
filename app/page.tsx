@@ -6,6 +6,7 @@ import Education from "./components/education";
 import Projects from "./components/projects";
 import Image from "next/image";
 import Achievements from "./components/achievement";
+import GitHubHeatmap from "./components/github-heatmap";
 import { motion } from "motion/react";
 
 const MotionImage = motion(Image);
@@ -37,6 +38,11 @@ export default function Page() {
             </p>
 
             <div className="my-8">
+                <GitHubHeatmap username="deep-vinci" />
+            </div>
+
+
+            <div className="my-8">
                 <Projects />
             </div>
 
@@ -47,7 +53,6 @@ export default function Page() {
             <div className="my-8">
                 <Skills />
             </div>
-
 
             {/* <div className="my-8">
                 <BlogPosts />
