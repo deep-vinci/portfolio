@@ -11,8 +11,8 @@ const GitHubCalendar = dynamic(
 export default function GitHubHeatmap({ username }: { username: string }) {
     return (
         <div>
-            <h2 className="text-xl mb-4 font-bold">GitHub Activity</h2>
-            <GitHubCalendar username={username} />
+            <h2 className="text-l mb-4 font-bold">GitHub Activity</h2>
+            <GitHubCalendar username={username} showMonthLabels={false} showColorLegend={false} />
         </div>
     );
 }
