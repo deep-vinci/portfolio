@@ -17,10 +17,10 @@ function formatDate(dateString: string): string {
         if (isNaN(date.getTime())) {
             return dateString;
         }
-        return date.toLocaleDateString('en-US', { 
-            year: 'numeric', 
-            month: 'short', 
-            day: 'numeric' 
+        return date.toLocaleDateString('en-US', {
+            year: 'numeric',
+            month: 'short',
+            day: 'numeric'
         });
     } catch {
         return dateString;
@@ -48,6 +48,16 @@ function BlogSkeleton() {
     );
 }
 
+const manualBlogPosts: BlogPost[] = [
+    {
+        title: "Asynchronous Programming",
+        url: "https://deep-vinci.github.io/asynchronous-js-demo/",
+        publishedAt: "Thu, 20 Jun 2024 12:00:00 GMT",
+        description: "In javascript there are mainly two different types of tasks which are blocking and non blocking, any task that takes a significant time to complete (relatively) is called blocking task in javascript (a huge while loop for an example) as that task is inserted into the call stack, javascript engine (which comprises of call stack and heap) first executes the loop then it clears of the loop off of the stack moving on to the next piece of code",
+        image: ""
+    }
+]
+
 export default function BlogPosts() {
     const [posts, setPosts] = useState<BlogPost[]>([]);
     const [loading, setLoading] = useState(true);
@@ -60,7 +70,12 @@ export default function BlogPosts() {
                 if (data.error) {
                     setError(data.error);
                 } else {
-                    setPosts(data.posts || []);
+                    console.info(data.posts);
+                    setPosts(prev => [
+                        ...prev,
+                        ...manualBlogPosts,
+                        ...(data.posts ?? [])
+                    ]);
                 }
                 setLoading(false);
             })
