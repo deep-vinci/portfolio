@@ -81,10 +81,10 @@ export default function HomeClient({ children }: { children?: React.ReactNode })
                         </div>
 
                         {/* Project Image Cards replacing blank divs for fanned-out effect */}
-                        <div className="relative h-[160px] sm:h-[220px] w-full mb-12 mt-4 flex justify-center items-center overflow-x-visible">
+                        <div className="relative h-[200px] sm:h-[260px] w-full mb-12 mt-4 flex justify-center items-center overflow-x-visible">
                             {/* Desktop Card 1 - Left/Back */}
-                            <div className="absolute w-[160px] sm:w-[250px] h-[100px] sm:h-[155px] bg-[#1a1a1a] border border-[#2e2e2e] rounded-xl shadow-2xl transform -rotate-[12deg] -translate-x-[50px] sm:-translate-x-[90px] -translate-y-4 sm:-translate-y-8 hover:-translate-y-5 hover:z-[60] transition duration-500 ease-out flex flex-col items-center justify-start overflow-hidden">
-                                <div className="w-full h-5 sm:h-6 flex-shrink-0 border-b border-[#2e2e2e] flex items-center px-2 gap-1 sm:gap-1 bg-[#141414]">
+                            <div className="absolute w-[180px] sm:w-[280px] h-[115px] sm:h-[175px] bg-[#1a1a1a] border border-[#2e2e2e] rounded-xl shadow-2xl transform -rotate-[12deg] -translate-x-[60px] sm:-translate-x-[100px] -translate-y-5 sm:-translate-y-9 hover:-translate-y-5 hover:z-[60] transition duration-500 ease-out flex flex-col items-center justify-start overflow-hidden">
+                                <div className="w-full h-5 sm:h-6 flex-shrink-0 border-b border-[#2e2e2e] flex items-center px-2 gap-1 sm:gap-1.5 bg-[#141414]">
                                     <div className="w-1.5 sm:w-2 h-1.5 sm:h-2 rounded-full bg-[#3a3a3a]"></div>
                                     <div className="w-1.5 sm:w-2 h-1.5 sm:h-2 rounded-full bg-[#3a3a3a]"></div>
                                     <div className="w-1.5 sm:w-2 h-1.5 sm:h-2 rounded-full bg-[#3a3a3a]"></div>
@@ -93,8 +93,8 @@ export default function HomeClient({ children }: { children?: React.ReactNode })
                             </div>
 
                             {/* Desktop Card 2 - Right/Back */}
-                            <div className="absolute w-[160px] sm:w-[250px] h-[100px] sm:h-[155px] bg-[#222222] border border-[#363636] rounded-xl shadow-2xl transform rotate-[12deg] translate-x-[50px] sm:translate-x-[90px] -translate-y-4 sm:-translate-y-8 hover:-translate-y-5 z-10 hover:z-[60] transition duration-500 ease-out flex flex-col items-center justify-start overflow-hidden">
-                                <div className="w-full h-5 sm:h-6 flex-shrink-0 border-b border-[#363636] flex items-center px-2 gap-1 sm:gap-1 bg-[#1c1c1c]">
+                            <div className="absolute w-[180px] sm:w-[280px] h-[115px] sm:h-[175px] bg-[#222222] border border-[#363636] rounded-xl shadow-2xl transform rotate-[12deg] translate-x-[60px] sm:translate-x-[100px] -translate-y-5 sm:-translate-y-9 hover:-translate-y-5 z-10 hover:z-[60] transition duration-500 ease-out flex flex-col items-center justify-start overflow-hidden">
+                                <div className="w-full h-5 sm:h-6 flex-shrink-0 border-b border-[#363636] flex items-center px-2 gap-1 sm:gap-1.5 bg-[#1c1c1c]">
                                     <div className="w-1.5 sm:w-2 h-1.5 sm:h-2 rounded-full bg-[#4a4a4a]"></div>
                                     <div className="w-1.5 sm:w-2 h-1.5 sm:h-2 rounded-full bg-[#4a4a4a]"></div>
                                     <div className="w-1.5 sm:w-2 h-1.5 sm:h-2 rounded-full bg-[#4a4a4a]"></div>
@@ -103,22 +103,22 @@ export default function HomeClient({ children }: { children?: React.ReactNode })
                             </div>
 
                             {/* Mobile Card 1 */}
-                            <div className="absolute w-[70px] sm:w-[95px] h-[140px] sm:h-[190px] bg-black border-[2px] sm:border-[4px] border-[#2a2a2a] rounded-[14px] sm:rounded-[18px] shadow-2xl transform -rotate-[15deg] -translate-x-[45px] sm:-translate-x-[90px] translate-y-6 sm:translate-y-10 hover:-translate-y-2 hover:z-[60] z-20 transition duration-500 ease-out flex flex-col items-center justify-start overflow-hidden">
+                            <div className="absolute w-[80px] sm:w-[105px] h-[160px] sm:h-[210px] bg-black border-[2px] sm:border-[5px] border-[#2a2a2a] rounded-[15px] sm:rounded-[20px] shadow-2xl transform -rotate-[15deg] -translate-x-[55px] sm:-translate-x-[105px] translate-y-7 sm:translate-y-12 hover:-translate-y-2 hover:z-[60] z-20 transition duration-500 ease-out flex flex-col items-center justify-start overflow-hidden">
                                 <div className="w-full h-full bg-cover bg-center" style={{ backgroundImage: "url('/proj-phone/1.jpeg')" }}></div>
                             </div>
 
                             {/* Mobile Card 2 */}
-                            <div className="absolute w-[70px] sm:w-[95px] h-[140px] sm:h-[190px] bg-black border-[2px] sm:border-[4px] border-[#2a2a2a] rounded-[14px] sm:rounded-[18px] shadow-2xl transform -rotate-[5deg] -translate-x-[12px] sm:-translate-x-[30px] translate-y-3 sm:translate-y-4 hover:-translate-y-2 hover:z-[60] z-30 transition duration-500 ease-out flex flex-col items-center justify-start overflow-hidden">
+                            <div className="absolute w-[80px] sm:w-[105px] h-[160px] sm:h-[210px] bg-black border-[2px] sm:border-[5px] border-[#2a2a2a] rounded-[15px] sm:rounded-[20px] shadow-2xl transform -rotate-[5deg] -translate-x-[15px] sm:-translate-x-[35px] translate-y-4 sm:translate-y-6 hover:-translate-y-2 hover:z-[60] z-30 transition duration-500 ease-out flex flex-col items-center justify-start overflow-hidden">
                                 <div className="w-full h-full bg-cover bg-center" style={{ backgroundImage: "url('/proj-phone/image.png')" }}></div>
                             </div>
 
                             {/* Mobile Card 3 */}
-                            <div className="absolute w-[70px] sm:w-[95px] h-[140px] sm:h-[190px] bg-black border-[2px] sm:border-[4px] border-[#2a2a2a] rounded-[14px] sm:rounded-[18px] shadow-2xl transform rotate-[5deg] translate-x-[15px] sm:translate-x-[30px] translate-y-3 sm:translate-y-4 hover:-translate-y-2 hover:z-[60] z-40 transition duration-500 ease-out flex flex-col items-center justify-start overflow-hidden">
+                            <div className="absolute w-[80px] sm:w-[105px] h-[160px] sm:h-[210px] bg-black border-[2px] sm:border-[5px] border-[#2a2a2a] rounded-[15px] sm:rounded-[20px] shadow-2xl transform rotate-[5deg] translate-x-[20px] sm:translate-x-[35px] translate-y-4 sm:translate-y-6 hover:-translate-y-2 hover:z-[60] z-40 transition duration-500 ease-out flex flex-col items-center justify-start overflow-hidden">
                                 <div className="w-full h-full bg-cover bg-center" style={{ backgroundImage: "url('/proj-phone/image copy.png')" }}></div>
                             </div>
 
                             {/* Mobile Card 4 */}
-                            <div className="absolute w-[70px] sm:w-[95px] h-[140px] sm:h-[190px] bg-black border-[2px] sm:border-[4px] border-[#2a2a2a] rounded-[14px] sm:rounded-[18px] shadow-2xl transform rotate-[15deg] translate-x-[45px] sm:translate-x-[90px] translate-y-6 sm:translate-y-10 hover:-translate-y-2 hover:z-[60] z-30 transition duration-500 ease-out flex flex-col items-center justify-start overflow-hidden">
+                            <div className="absolute w-[80px] sm:w-[105px] h-[160px] sm:h-[210px] bg-black border-[2px] sm:border-[5px] border-[#2a2a2a] rounded-[15px] sm:rounded-[20px] shadow-2xl transform rotate-[15deg] translate-x-[55px] sm:translate-x-[105px] translate-y-7 sm:translate-y-12 hover:-translate-y-2 hover:z-[60] z-30 transition duration-500 ease-out flex flex-col items-center justify-start overflow-hidden">
                                 <div className="w-full h-full bg-cover bg-center" style={{ backgroundImage: "url('/proj-phone/image copy 2.png')" }}></div>
                             </div>
                         </div>
