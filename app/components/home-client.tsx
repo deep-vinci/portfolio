@@ -1,61 +1,205 @@
 "use client";
 
-import Skills from "./skills";
-import Education from "./education";
-import Projects from "./projects";
-import Image from "next/image";
-import Achievements from "./achievement";
 import { motion } from "motion/react";
 
-const MotionImage = motion(Image);
-
-export default function HomeClient({
-    children: heatmapSlot,
-}: {
-    children: React.ReactNode;
-}) {
+export default function HomeClient({ children }: { children?: React.ReactNode }) {
     return (
-        <motion.section initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
-            <motion.div className="flex justify-between items-center mb-8">
-                <h1 className=" text-5xl font-extrabold tracking-tighter">
-                    Hi, deepvinci here
-                </h1>
-                <MotionImage
-                    className="flex-shrink-0 rounded-full"
-                    src="/pfp.jpg"
-                    alt="profile picture"
-                    width={80}
-                    height={80}
-                    drag
-                    dragSnapToOrigin
-                    dragElastic={0.1}
-                    dragTransition={{ bounceStiffness: 600, bounceDamping: 20 }}
-                    dragPropagation
-                    whileDrag={{ scale: 1.1 }}
-                />
-            </motion.div>
-            <p className="mb-4 text-md text-gray-700 dark:text-[#bcbcbc]">
-                {`I'm a Android and Fullstack web devloper and engineering student who builds, functional systems with a purpose. Currently i am deep diving
-                into full stack devlopment, AI and Systems engineering.`}
-            </p>
-
-            <div className="my-8">{heatmapSlot}</div>
-
-            <div className="my-8">
-                <Projects />
+        <>
+            {/* Top Fixed Header replicating the image */}
+            <div className="fixed top-0 left-0 w-full z-50 px-6 sm:px-8 py-4 flex justify-between items-center bg-[#0e0e0e]/80 backdrop-blur-md">
+                <div className="w-10 h-10 rounded-full overflow-hidden border border-[#2a2a2a]">
+                    <img src="/pfp.jpg" alt="Profile" className="w-full h-full object-cover" />
+                </div>
+                <button className="bg-[#10b981] text-white px-5 py-2.5 rounded-full font-bold text-sm tracking-wide hover:bg-[#059669] transition flex items-center gap-3 shadow-lg shadow-[#10b981]/20">
+                    Get in touch
+                    <div className="flex items-center gap-1.5 bg-white/20 px-2 py-1 rounded-full">
+                        <div className="w-1.5 h-1.5 bg-white rounded-full"></div>
+                        <div className="w-1.5 h-1.5 bg-white rounded-full"></div>
+                    </div>
+                </button>
             </div>
 
-            <div className="my-8">
-                <Achievements />
-            </div>
+            <motion.section
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5 }}
+                className="grid grid-cols-1 lg:grid-cols-[1fr_1fr] gap-10 lg:gap-20 items-start w-full relative"
+            >
 
-            <div className="my-8">
-                <Skills />
-            </div>
+                {/* Left Column */}
+                <div className="flex flex-col pt-5 lg:sticky lg:top-24 lg:h-[calc(100vh-120px)] justify-between pb-10">
+                    {/* Meta details */}
+                    <div className="grid grid-cols-[120px_1fr] md:grid-cols-[140px_1fr] gap-x-4 gap-y-3 text-sm text-[#898989] uppercase tracking-wider font-mono">
+                        <span>TIMEZONE</span> <span className="text-[#e2e2e2] normal-case">UTC +5:30</span>
+                        <span>LOCATION</span> <span className="text-[#e2e2e2] normal-case">India/</span>
+                        <span>ROLE</span> <span className="text-[#e2e2e2] normal-case">Android & Fullstack Dev</span>
+                        <span>SKILLSET</span> <span className="text-[#e2e2e2] normal-case">React, Next.js, Java, Python</span>
+                    </div>
 
-            <div className="my-8">
-                <Education />
-            </div>
-        </motion.section>
+                    <div className="mt-20 mb-10 lg:mt-auto">
+                        {/* Headline */}
+                        <h1 className="text-xl md:text-[2rem] font-bold tracking-tight mb-6 max-w-[90%] md:max-w-lg leading-[1.3] text-[#f2f2f2]">
+                            Crafting high-performance Android apps and scalable fullstack systems with a focus on deep engineering.
+                        </h1>
+
+                        {/* Buttons */}
+                        <div className="flex flex-wrap items-center gap-4">
+                            <a
+                                href="https://linkedin.com/in/deepakwork"
+                                target="_blank" rel="noreferrer"
+                                className="flex items-center justify-center gap-2 px-6 py-2.5 bg-white text-black rounded-full font-bold text-xs tracking-wide hover:bg-gray-200 transition uppercase"
+                            >
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="#0A66C2"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" /></svg>
+                                LinkedIn
+                            </a>
+                            <span className="text-xs font-mono font-medium text-gray-500 uppercase">OR</span>
+                            <a
+                                href="mailto:deepakworkpc@gmail.com"
+                                className="flex items-center justify-center gap-2 px-6 py-2.5 bg-white text-black rounded-full font-bold text-xs tracking-wide hover:bg-gray-200 transition uppercase"
+                            >
+                                <span className="text-red-500">M</span> Mail Me
+                            </a>
+                        </div>
+
+                    </div>
+                </div>
+
+                {/* Right Column */}
+                <div className="flex flex-col md:pt-16 pb-20 overflow-hidden">
+
+                    <div className="w-full lg:max-w-xl lg:ml-auto">
+                        {children}
+
+                        {/* Fields of Work */}
+                        <div className="mb-12">
+                            <h3 className="text-xl font-bold font-mono tracking-widest uppercase mb-6 text-white">
+                                FIELDS OF WORK
+                            </h3>
+                            <p className="text-[#a0a0a0] text-base md:text-lg leading-relaxed font-light">
+                                I bridge the gap between complex backends and intuitive mobile & web interfaces. From WebGL mapping tools to real-time Android services built securely, scaled correctly.
+                            </p>
+                        </div>
+
+                        {/* Project Image Cards replacing blank divs for fanned-out effect */}
+                        <div className="relative h-[215px] sm:h-[300px] w-full mb-12 mt-4 flex justify-center items-center overflow-x-visible">
+                            {/* Desktop Card 1 - Left/Back */}
+                            <div className="absolute w-[215px] sm:w-[340px] h-[135px] sm:h-[215px] bg-[#1a1a1a] border border-[#2e2e2e] rounded-xl shadow-2xl transform -rotate-[12deg] -translate-x-10 sm:-translate-x-20 -translate-y-3 sm:-translate-y-6 hover:-translate-y-5 hover:z-[60] transition duration-500 ease-out flex flex-col items-center justify-start overflow-hidden">
+                                <div className="w-full h-6 sm:h-7 flex-shrink-0 border-b border-[#2e2e2e] flex items-center px-3 gap-1 sm:gap-1.5 bg-[#141414]">
+                                    <div className="w-2 sm:w-2 h-2 sm:h-2 rounded-full bg-[#3a3a3a]"></div>
+                                    <div className="w-2 sm:w-2 h-2 sm:h-2 rounded-full bg-[#3a3a3a]"></div>
+                                    <div className="w-2 sm:w-2 h-2 sm:h-2 rounded-full bg-[#3a3a3a]"></div>
+                                </div>
+                                <div className="w-full flex-1 bg-cover bg-top" style={{ backgroundImage: "url('/proj-img/campusmap.png')" }}></div>
+                            </div>
+
+                            {/* Desktop Card 2 - Right/Back */}
+                            <div className="absolute w-[215px] sm:w-[340px] h-[135px] sm:h-[215px] bg-[#222222] border border-[#363636] rounded-xl shadow-2xl transform rotate-[12deg] translate-x-10 sm:translate-x-20 -translate-y-3 sm:-translate-y-6 hover:-translate-y-5 z-10 hover:z-[60] transition duration-500 ease-out flex flex-col items-center justify-start overflow-hidden">
+                                <div className="w-full h-6 sm:h-7 flex-shrink-0 border-b border-[#363636] flex items-center px-3 gap-1 sm:gap-1.5 bg-[#1c1c1c]">
+                                    <div className="w-2 sm:w-2 h-2 sm:h-2 rounded-full bg-[#4a4a4a]"></div>
+                                    <div className="w-2 sm:w-2 h-2 sm:h-2 rounded-full bg-[#4a4a4a]"></div>
+                                    <div className="w-2 sm:w-2 h-2 sm:h-2 rounded-full bg-[#4a4a4a]"></div>
+                                </div>
+                                <div className="w-full flex-1 bg-cover bg-top" style={{ backgroundImage: "url('/proj-img/gitview.png')" }}></div>
+                            </div>
+
+                            {/* Mobile Card 1 */}
+                            <div className="absolute w-[90px] sm:w-[125px] h-[180px] sm:h-[250px] bg-black border-[3px] sm:border-[5px] border-[#2a2a2a] rounded-[18px] sm:rounded-[22px] shadow-2xl transform -rotate-[6deg] -translate-x-14 sm:-translate-x-20 translate-y-5 sm:translate-y-8 hover:-translate-y-5 z-20 hover:z-[60] transition duration-500 ease-out flex flex-col items-center justify-start overflow-hidden">
+                                <div className="w-full h-full bg-cover bg-center" style={{ backgroundImage: "url('/proj-phone/1.jpeg')" }}></div>
+                            </div>
+
+                            {/* Mobile Card 2 */}
+                            <div className="absolute w-[90px] sm:w-[125px] h-[180px] sm:h-[250px] bg-black border-[3px] sm:border-[5px] border-[#2a2a2a] rounded-[18px] sm:rounded-[22px] shadow-2xl transform -rotate-[2deg] -translate-x-5 sm:-translate-x-7 translate-y-7 sm:translate-y-10 hover:-translate-y-5 z-30 hover:z-[60] transition duration-500 ease-out flex flex-col items-center justify-start overflow-hidden">
+                                <div className="w-full h-full bg-cover bg-center" style={{ backgroundImage: "url('/proj-phone/image.png')" }}></div>
+                            </div>
+
+                            {/* Mobile Card 3 */}
+                            <div className="absolute w-[90px] sm:w-[125px] h-[180px] sm:h-[250px] bg-black border-[3px] sm:border-[5px] border-[#2a2a2a] rounded-[18px] sm:rounded-[22px] shadow-2xl transform rotate-[2deg] translate-x-5 sm:translate-x-7 translate-y-7 sm:translate-y-10 hover:-translate-y-5 z-40 hover:z-[60] transition duration-500 ease-out flex flex-col items-center justify-start overflow-hidden">
+                                <div className="w-full h-full bg-cover bg-center" style={{ backgroundImage: "url('/proj-phone/image copy.png')" }}></div>
+                            </div>
+
+                            {/* Mobile Card 4 */}
+                            <div className="absolute w-[90px] sm:w-[125px] h-[180px] sm:h-[250px] bg-black border-[3px] sm:border-[5px] border-[#2a2a2a] rounded-[18px] sm:rounded-[22px] shadow-2xl transform rotate-[6deg] translate-x-14 sm:translate-x-20 translate-y-5 sm:translate-y-8 hover:-translate-y-5 z-40 hover:z-[60] transition duration-500 ease-out flex flex-col items-center justify-start overflow-hidden">
+                                <div className="w-full h-full bg-cover bg-center" style={{ backgroundImage: "url('/proj-phone/image copy 2.png')" }}></div>
+                            </div>
+                        </div>
+
+                        {/* What I Build */}
+                        <div className="mb-12 border-t border-[#1f1f1f] pt-12">
+                            <h4 className="text-sm font-mono tracking-widest text-[#898989] uppercase mb-8">
+                                WHAT I BUILD
+                            </h4>
+                            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-y-6 gap-x-6 text-sm font-medium">
+                                <div className="flex items-center gap-3 text-[#d4d4d4]"><span className="text-[#888] font-light text-lg pb-[2px]">+</span> Fullstack Web Apps</div>
+                                <div className="flex items-center gap-3 text-[#d4d4d4]"><span className="text-[#888] font-light text-lg pb-[2px]">+</span> Android Apps</div>
+                                <div className="flex items-center gap-3 text-[#d4d4d4]"><span className="text-[#888] font-light text-lg pb-[2px]">+</span> System Architectures</div>
+                                <div className="flex items-center gap-3 text-[#d4d4d4]"><span className="text-[#888] font-light text-lg pb-[2px]">+</span> 3D Visualizations</div>
+                                <div className="flex items-center gap-3 text-[#d4d4d4]"><span className="text-[#888] font-light text-lg pb-[2px]">+</span> Interactive Maps</div>
+                                <div className="flex items-center gap-3 text-[#d4d4d4]"><span className="text-[#888] font-light text-lg pb-[2px]">+</span> APIs & Backends</div>
+                            </div>
+                        </div>
+
+                        {/* Domains */}
+                        <div className="mb-12 border-t border-[#1f1f1f] pt-12">
+                            <h4 className="text-sm font-mono tracking-widest text-[#898989] uppercase mb-8">
+                                DOMAINS I'VE SHIPPED IN
+                            </h4>
+                            <div className="grid grid-cols-2 lg:grid-cols-3 gap-y-6 gap-x-6 text-sm font-medium">
+                                <div className="flex items-center gap-3 text-[#d4d4d4]">
+                                    <span className="text-[#888] flex items-center justify-center">
+                                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg>
+                                    </span>
+                                    AI & Systems
+                                </div>
+                                <div className="flex items-center gap-3 text-[#d4d4d4]">
+                                    <span className="text-[#888] flex items-center justify-center">
+                                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"></path></svg>
+                                    </span>
+                                    Healthcare (MES)
+                                </div>
+                                <div className="flex items-center gap-3 text-[#d4d4d4]">
+                                    <span className="text-[#888] flex items-center justify-center">
+                                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polygon points="3 6 9 3 15 6 21 3 21 18 15 21 9 18 3 21"></polygon><line x1="9" y1="3" x2="9" y2="21"></line><line x1="15" y1="3" x2="15" y2="21"></line></svg>
+                                    </span>
+                                    Navigation (GIS)
+                                </div>
+                                <div className="flex items-center gap-3 text-[#d4d4d4]">
+                                    <span className="text-[#888] flex items-center justify-center">
+                                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg>
+                                    </span>
+                                    Data Vizualization
+                                </div>
+                                <div className="flex items-center gap-3 text-[#d4d4d4]">
+                                    <span className="text-[#888] flex items-center justify-center">
+                                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect><line x1="12" y1="18" x2="12.01" y2="18"></line></svg>
+                                    </span>
+                                    Mobile Platforms
+                                </div>
+                                <div className="flex items-center gap-3 text-[#d4d4d4]">
+                                    <span className="text-[#888] flex items-center justify-center">
+                                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
+                                    </span>
+                                    Hackathons
+                                </div>
+                            </div>
+                        </div>
+
+                        {/* Stacks */}
+                        <div className="mb-6 border-t border-[#1f1f1f] pt-12">
+                            <h4 className="text-sm font-mono tracking-widest text-[#898989] uppercase mb-8">
+                                STACKS
+                            </h4>
+                            <div className="flex flex-wrap gap-x-8 gap-y-4">
+                                <span className="text-sm font-medium text-[#d4d4d4]">React / Next.js</span>
+                                <span className="text-sm font-medium text-[#d4d4d4]">Java / Kotlin</span>
+                                <span className="text-sm font-medium text-[#d4d4d4]">TypeScript</span>
+                                <span className="text-sm font-medium text-[#d4d4d4]">Docker</span>
+                                <span className="text-sm font-medium text-[#d4d4d4]">PostgreSQL</span>
+                                <span className="text-sm font-medium text-[#d4d4d4]">Python</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </motion.section>
+        </>
     );
 }

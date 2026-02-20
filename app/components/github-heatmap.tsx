@@ -14,7 +14,7 @@ type Contribution = { date: string; count: number; level: number };
 async function fetchContributions(username: string): Promise<Contribution[]> {
     const res = await fetch(
         `https://github-contributions-api.jogruber.de/v4/${username}?y=last`,
-        { next: { revalidate: 86400 } } 
+        { next: { revalidate: 86400 } }
     );
     if (!res.ok) return [];
     const data = await res.json();
@@ -27,7 +27,7 @@ export default async function GitHubHeatmap({ username }: { username: string }) 
     if (contributions.length === 0) {
         return (
             <div>
-                <h2 className="text-l mb-4 font-bold">GitHub Activity</h2>
+                <h3 className="text-xl font-bold font-mono tracking-widest uppercase mb-6 text-white">GITHUB ACTIVITY</h3>
                 <p className="text-sm text-gray-500 dark:text-gray-400">
                     Unable to load contribution data.
                 </p>
@@ -41,38 +41,38 @@ export default async function GitHubHeatmap({ username }: { username: string }) 
 
     return (
         <>
-            <h2 className="text-l mb-4 font-bold">GitHub Activity</h2>
-                <div className="overflow-scroll">
-            <svg
-                width={width}
-                height={height}
-                viewBox={`0 0 ${width} ${height}`}
-                className="overflow-visible"
-                aria-label="GitHub contribution graph"
-            >
-                {contributions.map((c, i) => {
-                    const week = Math.floor(i / 7);
-                    const day = i % 7;
-                    const x = week * (CELL_SIZE + GAP);
-                    const y = day * (CELL_SIZE + GAP);
-                    const fill = LEVEL_COLORS[Math.min(c.level, 4)];
-                    return (
-                        <rect
-                            key={c.date}
-                            x={x}
-                            y={y}
-                            width={CELL_SIZE}
-                            height={CELL_SIZE}
-                            rx={2}
-                            ry={2}
-                            fill={fill}
-                            data-date={c.date}
-                            data-count={c.count}
-                        />
-                    );
-                })}
-            </svg>
-        </div>
+            <h3 className="text-xl font-bold font-mono tracking-widest uppercase mb-6 text-white">GITHUB ACTIVITY</h3>
+            <div className="overflow-scroll">
+                <svg
+                    width={width}
+                    height={height}
+                    viewBox={`0 0 ${width} ${height}`}
+                    className="overflow-visible"
+                    aria-label="GitHub contribution graph"
+                >
+                    {contributions.map((c, i) => {
+                        const week = Math.floor(i / 7);
+                        const day = i % 7;
+                        const x = week * (CELL_SIZE + GAP);
+                        const y = day * (CELL_SIZE + GAP);
+                        const fill = LEVEL_COLORS[Math.min(c.level, 4)];
+                        return (
+                            <rect
+                                key={c.date}
+                                x={x}
+                                y={y}
+                                width={CELL_SIZE}
+                                height={CELL_SIZE}
+                                rx={2}
+                                ry={2}
+                                fill={fill}
+                                data-date={c.date}
+                                data-count={c.count}
+                            />
+                        );
+                    })}
+                </svg>
+            </div>
 
         </>
     );

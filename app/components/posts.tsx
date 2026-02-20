@@ -108,7 +108,6 @@ export default function BlogPosts() {
 
     return (
         <div>
-            <h2 className="text-xl font-bold mb-4">Blogs</h2>
             {posts.length === 0 ? (
                 <p className="text-gray-700 dark:text-[#bcbcbc] py-4">No blog posts yet.</p>
             ) : (
@@ -124,21 +123,21 @@ export default function BlogPosts() {
                     .map((post, index) => (
                         <Link
                             key={index}
-                            className="flex justify-start gap-4 my-4 cursor-pointer hover:scale-[1.01] duration-200 group relative"
+                            className="flex justify-start gap-5 my-6 cursor-pointer hover:bg-[#181818] p-4 -ml-4 rounded-xl transition-all duration-300 relative group"
                             href={post.url}
                             target="_blank"
                             rel="noopener noreferrer"
                         >
                             {post.image ? (
-                                <div className="shrink-0 w-32 h-20 rounded-lg overflow-hidden bg-neutral-200 dark:bg-neutral-800 flex items-center justify-center">
+                                <div className="shrink-0 w-24 h-16 rounded-lg overflow-hidden border border-[#2a2a2a] bg-[#0e0e0e] flex items-center justify-center">
                                     <img
                                         src={post.image}
                                         alt={post.title}
-                                        className="max-w-full max-h-full w-auto h-auto object-contain group-hover:scale-105 transition-transform duration-200"
+                                        className="max-w-full max-h-full w-auto h-auto object-cover opacity-80 group-hover:opacity-100 group-hover:scale-105 transition-all duration-300"
                                     />
                                 </div>
                             ) : (
-                                <div className="shrink-0 w-32 h-20 bg-gradient-to-br from-blue-500 to-purple-600 rounded-lg flex items-center justify-center text-white font-bold text-lg group-hover:from-blue-600 group-hover:to-purple-700 transition-colors">
+                                <div className="shrink-0 w-24 h-16 bg-[#181818] border border-[#2a2a2a] rounded-lg flex items-center justify-center text-[#555] group-hover:text-[#10b981] transition-colors">
                                     <svg
                                         className="w-6 h-6"
                                         fill="none"
@@ -148,23 +147,23 @@ export default function BlogPosts() {
                                         <path
                                             strokeLinecap="round"
                                             strokeLinejoin="round"
-                                            strokeWidth={2}
-                                            d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
+                                            strokeWidth={1.5}
+                                            d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z"
                                         />
                                     </svg>
                                 </div>
                             )}
-                            <div className="flex-1 min-w-0">
-                                <h3 className="font-bold text-neutral-900 dark:text-neutral-100 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors mb-1 line-clamp-1">
+                            <div className="flex flex-col justify-center flex-1 min-w-0 pr-4">
+                                <h3 className="font-bold text-lg text-white group-hover:text-[#10b981] transition-colors line-clamp-1">
                                     {post.title}
                                 </h3>
                                 {post.description && (
-                                    <p className="text-sm text-gray-700 dark:text-[#bcbcbc] line-clamp-2">
+                                    <p className="text-sm text-[#898989] font-light mt-1 max-w-xl leading-relaxed line-clamp-2">
                                         {post.description}
                                     </p>
                                 )}
                             </div>
-                            <div className="shrink-0 text-gray-700 dark:text-[#bcbcbc] ml-auto mr-0 text-sm tabular-nums">
+                            <div className="shrink-0 mt-2 ml-auto text-xs font-mono font-bold tracking-widest text-[#555] group-hover:text-white transition-colors">
                                 {formatDate(post.publishedAt)}
                             </div>
                         </Link>
