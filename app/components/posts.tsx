@@ -64,15 +64,19 @@ export default function BlogPosts() {
     const [error, setError] = useState<string | null>(null);
 
     useEffect(() => {
+        let isMounted = true;
         fetch('/api/medium')
             .then(res => res.json())
             .then(data => {
+                if (!isMounted) return;
+
                 if (data.error) {
                     setError(data.error);
                 } else {
                     console.info(data.posts);
-                    setPosts(prev => [
-                        ...prev,
+                    // Use absolute assignment instead of appending to prev 
+                    // to prevent React Strict Mode duplicate render bugs
+                    setPosts([
                         ...manualBlogPosts,
                         ...(data.posts ?? [])
                     ]);
@@ -80,10 +84,15 @@ export default function BlogPosts() {
                 setLoading(false);
             })
             .catch(err => {
+                if (!isMounted) return;
                 console.error('Error fetching blog posts:', err);
                 setError('Failed to load blog posts');
                 setLoading(false);
             });
+
+        return () => {
+            isMounted = false;
+        };
     }, []);
 
     if (loading) {
