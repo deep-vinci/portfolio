@@ -10,13 +10,13 @@ export default function HomeClient({ children }: { children?: React.ReactNode })
                 <div className="w-10 h-10 rounded-full overflow-hidden border border-[#2a2a2a]">
                     <img src="/pfp.jpg" alt="Profile" className="w-full h-full object-cover" />
                 </div>
-                <button className="bg-[#10b981] text-white px-5 py-2.5 rounded-full font-bold text-sm tracking-wide hover:bg-[#059669] transition flex items-center gap-3 shadow-lg shadow-[#10b981]/20">
+                <a href="https://cal.com/deepvinci/15min" target="_blank" rel="noreferrer" className="bg-[#10b981] text-white px-5 py-2.5 rounded-full font-bold text-sm tracking-wide hover:bg-[#059669] transition flex items-center gap-3 shadow-lg shadow-[#10b981]/20">
                     Get in touch
                     <div className="flex items-center gap-1.5 bg-white/20 px-2 py-1 rounded-full">
                         <div className="w-1.5 h-1.5 bg-white rounded-full"></div>
                         <div className="w-1.5 h-1.5 bg-white rounded-full"></div>
                     </div>
-                </button>
+                </a>
             </div>
 
             <motion.section
@@ -54,12 +54,11 @@ export default function HomeClient({ children }: { children?: React.ReactNode })
                             </a>
                             <span className="text-xs font-mono font-medium text-gray-500 uppercase">OR</span>
                             <a
-                                href="https://cal.com/deepvinci/15min"
-                                target="_blank" rel="noreferrer"
+                                href="mailto:deepakworkpc@gmail.com"
                                 className="flex items-center justify-center gap-2 px-6 py-2.5 bg-white text-black rounded-full font-bold text-xs tracking-wide hover:bg-gray-200 transition uppercase"
                             >
-                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
-                                Book a Call
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                                Mail
                             </a>
                         </div>
 
@@ -127,6 +126,9 @@ export default function HomeClient({ children }: { children?: React.ReactNode })
 
                         {/* Achievements - Highlighted & Moved Up */}
                         <div className="mb-12 pt-20">
+                            <h4 className="text-sm font-mono tracking-widest text-[#898989] uppercase mb-8">
+                                ACHIEVEMENTS
+                            </h4>
                             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                                 <div className="relative group bg-[#111] border border-[#222] rounded-2xl p-5 overflow-hidden hover:border-[#333] transition-colors cursor-default">
                                     <div className="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
@@ -150,6 +152,52 @@ export default function HomeClient({ children }: { children?: React.ReactNode })
                                     </div>
                                     <h5 className="text-white text-lg font-bold mb-2">9.1/10 Avg Rating</h5>
                                     <p className="text-[#888] text-sm leading-relaxed max-w-[90%]">Received overwhelmingly positive response across 341 reviews for shipped project architecture and UX.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        {/* Internship */}
+                        <div className="mb-12 border-t border-[#1f1f1f] pt-12">
+                            <h4 className="text-sm font-mono tracking-widest text-[#898989] uppercase mb-8">
+                                EXPERIENCE
+                            </h4>
+                            <div className="group relative bg-[#111] border border-[#222] hover:border-[#333] rounded-2xl p-6 transition-all duration-300 cursor-pointer overflow-hidden">
+                                <div className="flex justify-between items-start mb-2">
+                                    <div>
+                                        <h5 className="text-white text-lg font-bold mb-1">Android Developer</h5>
+                                        <div className="text-[#10b981] font-mono text-xs font-bold tracking-widest uppercase mb-1 opacity-80">Tinkering Hub, Parul University • Internship</div>
+                                        <div className="text-[#666] font-mono text-xs tracking-wide mb-4">Nov 2025 – Dec 2025 · 2 mos · Vadodara, Gujarat, India · On-site</div>
+                                    </div>
+                                    <div className="text-[#888] group-hover:text-white transition-colors duration-300 transform group-hover:rotate-180">
+                                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                                    </div>
+                                </div>
+
+                                <p className="text-[#888] text-sm leading-relaxed mb-4">
+                                    Worked on ARCore Cloud Anchors, Geospatial API, and automated 360° panorama pipelines for immersive AR/VR experiences.
+                                </p>
+
+                                <div className="grid grid-rows-[0fr] group-hover:grid-rows-[1fr] transition-[grid-template-rows] duration-500 ease-out">
+                                    <div className="overflow-hidden">
+                                        <div className="pt-4 border-t border-[#222] mt-2 flex flex-col gap-3">
+                                            <div className="flex items-start gap-3">
+                                                <span className="text-[#10b981] mt-0.5 opacity-70">✦</span>
+                                                <span className="text-[#a0a0a0] text-sm">Worked extensively with Google ARCore Cloud Anchors as well as Geospatial API, enabling persistent and shared AR experiences across devices and sessions.</span>
+                                            </div>
+                                            <div className="flex items-start gap-3">
+                                                <span className="text-[#10b981] mt-0.5 opacity-70">✦</span>
+                                                <span className="text-[#a0a0a0] text-sm">Implemented a suite of isolated CLI tools into a cohesive, automated web pipeline for end-to-end 360° panorama generation using Hugin for immersive AR/VR use cases.</span>
+                                            </div>
+                                            <div className="flex items-start gap-3">
+                                                <span className="text-[#10b981] mt-0.5 opacity-70">✦</span>
+                                                <span className="text-[#a0a0a0] text-sm">Built an Android application to host, detect, and resolve Cloud Anchors allowing independent validation and debugging of multi-user AR workflows.</span>
+                                            </div>
+                                            <div className="flex items-start gap-3">
+                                                <span className="text-[#10b981] mt-0.5 opacity-70">✦</span>
+                                                <span className="text-[#a0a0a0] text-sm">Conducted research and experimentation with HLOC (Hierarchical Localization) as a potential replacement for ARCore Geospatial API, evaluating visual localization accuracy, scalability, and deployment feasibility.</span>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
