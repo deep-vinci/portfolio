@@ -26,6 +26,6 @@ export const metadata: Metadata = {
 };
 
 export default function ResumePage() {
-    redirect('/resume.pdf');
+    redirect('/resume-meta.pdf');
 }
 
