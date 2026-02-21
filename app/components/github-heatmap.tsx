@@ -42,7 +42,7 @@ export default async function GitHubHeatmap({ username }: { username: string }) 
     return (
         <>
             <h3 className="text-xl font-bold font-mono tracking-widest uppercase mb-6 text-white">GITHUB ACTIVITY</h3>
-            <div className="overflow-scroll">
+            <div className="overflow-x-auto scrollbar-none">
                 <svg
                     width={width}
                     height={height}

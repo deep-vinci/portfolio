@@ -81,45 +81,83 @@ export default function HomeClient({ children }: { children?: React.ReactNode })
                             </p>
                         </div>
 
-                        {/* Project Image Cards replacing blank divs for fanned-out effect */}
-                        <div className="relative h-[200px] sm:h-[260px] w-full mb-12 mt-4 flex justify-center items-center overflow-x-visible">
+                        {/* Mobile: stacked two-tier layout */}
+                        <div className="sm:hidden flex flex-col gap-5 mb-12 mt-4 items-center">
+                            {/* Browser screenshots row */}
+                            <div className="flex gap-3 justify-center w-full">
+                                <div className="w-[48%] aspect-[16/10] bg-[#1a1a1a] border border-[#2e2e2e] rounded-xl shadow-2xl flex flex-col overflow-hidden">
+                                    <div className="w-full h-5 flex-shrink-0 border-b border-[#2e2e2e] flex items-center px-2 gap-1 bg-[#141414]">
+                                        <div className="w-1.5 h-1.5 rounded-full bg-[#3a3a3a]"></div>
+                                        <div className="w-1.5 h-1.5 rounded-full bg-[#3a3a3a]"></div>
+                                        <div className="w-1.5 h-1.5 rounded-full bg-[#3a3a3a]"></div>
+                                    </div>
+                                    <div className="w-full flex-1 bg-cover bg-top" style={{ backgroundImage: "url('/proj-img/campusmap.png')" }}></div>
+                                </div>
+                                <div className="w-[48%] aspect-[16/10] bg-[#222222] border border-[#363636] rounded-xl shadow-2xl flex flex-col overflow-hidden">
+                                    <div className="w-full h-5 flex-shrink-0 border-b border-[#363636] flex items-center px-2 gap-1 bg-[#1c1c1c]">
+                                        <div className="w-1.5 h-1.5 rounded-full bg-[#4a4a4a]"></div>
+                                        <div className="w-1.5 h-1.5 rounded-full bg-[#4a4a4a]"></div>
+                                        <div className="w-1.5 h-1.5 rounded-full bg-[#4a4a4a]"></div>
+                                    </div>
+                                    <div className="w-full flex-1 bg-cover bg-top" style={{ backgroundImage: "url('/proj-img/gitview.png')" }}></div>
+                                </div>
+                            </div>
+                            {/* Phone screenshots row */}
+                            <div className="flex gap-3 justify-center">
+                                <div className="w-[60px] h-[120px] bg-black border-[2px] border-[#2a2a2a] rounded-[12px] shadow-2xl overflow-hidden">
+                                    <div className="w-full h-full bg-cover bg-center" style={{ backgroundImage: "url('/proj-phone/1.jpeg')" }}></div>
+                                </div>
+                                <div className="w-[60px] h-[120px] bg-black border-[2px] border-[#2a2a2a] rounded-[12px] shadow-2xl overflow-hidden">
+                                    <div className="w-full h-full bg-cover bg-center" style={{ backgroundImage: "url('/proj-phone/image.png')" }}></div>
+                                </div>
+                                <div className="w-[60px] h-[120px] bg-black border-[2px] border-[#2a2a2a] rounded-[12px] shadow-2xl overflow-hidden">
+                                    <div className="w-full h-full bg-cover bg-center" style={{ backgroundImage: "url('/proj-phone/image copy.png')" }}></div>
+                                </div>
+                                <div className="w-[60px] h-[120px] bg-black border-[2px] border-[#2a2a2a] rounded-[12px] shadow-2xl overflow-hidden">
+                                    <div className="w-full h-full bg-cover bg-center" style={{ backgroundImage: "url('/proj-phone/image copy 2.png')" }}></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        {/* Desktop sm+: fanned layout */}
+                        <div className="hidden sm:flex relative h-[260px] w-full mb-12 mt-4 justify-center items-center overflow-x-visible">
                             {/* Desktop Card 1 - Left/Back */}
-                            <div className="absolute w-[180px] sm:w-[280px] h-[115px] sm:h-[175px] bg-[#1a1a1a] border border-[#2e2e2e] rounded-xl shadow-2xl transform -rotate-[12deg] -translate-x-[60px] sm:-translate-x-[100px] -translate-y-5 sm:-translate-y-9 hover:-translate-y-5 hover:z-[60] transition duration-500 ease-out flex flex-col items-center justify-start overflow-hidden">
-                                <div className="w-full h-5 sm:h-6 flex-shrink-0 border-b border-[#2e2e2e] flex items-center px-2 gap-1 sm:gap-1.5 bg-[#141414]">
-                                    <div className="w-1.5 sm:w-2 h-1.5 sm:h-2 rounded-full bg-[#3a3a3a]"></div>
-                                    <div className="w-1.5 sm:w-2 h-1.5 sm:h-2 rounded-full bg-[#3a3a3a]"></div>
-                                    <div className="w-1.5 sm:w-2 h-1.5 sm:h-2 rounded-full bg-[#3a3a3a]"></div>
+                            <div className="absolute w-[280px] h-[175px] bg-[#1a1a1a] border border-[#2e2e2e] rounded-xl shadow-2xl transform -rotate-[12deg] -translate-x-[100px] -translate-y-9 hover:-translate-y-5 hover:z-[60] transition duration-500 ease-out flex flex-col items-center justify-start overflow-hidden">
+                                <div className="w-full h-6 flex-shrink-0 border-b border-[#2e2e2e] flex items-center px-2 gap-1.5 bg-[#141414]">
+                                    <div className="w-2 h-2 rounded-full bg-[#3a3a3a]"></div>
+                                    <div className="w-2 h-2 rounded-full bg-[#3a3a3a]"></div>
+                                    <div className="w-2 h-2 rounded-full bg-[#3a3a3a]"></div>
                                 </div>
                                 <div className="w-full flex-1 bg-cover bg-top" style={{ backgroundImage: "url('/proj-img/campusmap.png')" }}></div>
                             </div>
 
                             {/* Desktop Card 2 - Right/Back */}
-                            <div className="absolute w-[180px] sm:w-[280px] h-[115px] sm:h-[175px] bg-[#222222] border border-[#363636] rounded-xl shadow-2xl transform rotate-[12deg] translate-x-[60px] sm:translate-x-[100px] -translate-y-5 sm:-translate-y-9 hover:-translate-y-5 z-10 hover:z-[60] transition duration-500 ease-out flex flex-col items-center justify-start overflow-hidden">
-                                <div className="w-full h-5 sm:h-6 flex-shrink-0 border-b border-[#363636] flex items-center px-2 gap-1 sm:gap-1.5 bg-[#1c1c1c]">
-                                    <div className="w-1.5 sm:w-2 h-1.5 sm:h-2 rounded-full bg-[#4a4a4a]"></div>
-                                    <div className="w-1.5 sm:w-2 h-1.5 sm:h-2 rounded-full bg-[#4a4a4a]"></div>
-                                    <div className="w-1.5 sm:w-2 h-1.5 sm:h-2 rounded-full bg-[#4a4a4a]"></div>
+                            <div className="absolute w-[280px] h-[175px] bg-[#222222] border border-[#363636] rounded-xl shadow-2xl transform rotate-[12deg] translate-x-[100px] -translate-y-9 hover:-translate-y-5 z-10 hover:z-[60] transition duration-500 ease-out flex flex-col items-center justify-start overflow-hidden">
+                                <div className="w-full h-6 flex-shrink-0 border-b border-[#363636] flex items-center px-2 gap-1.5 bg-[#1c1c1c]">
+                                    <div className="w-2 h-2 rounded-full bg-[#4a4a4a]"></div>
+                                    <div className="w-2 h-2 rounded-full bg-[#4a4a4a]"></div>
+                                    <div className="w-2 h-2 rounded-full bg-[#4a4a4a]"></div>
                                 </div>
                                 <div className="w-full flex-1 bg-cover bg-top" style={{ backgroundImage: "url('/proj-img/gitview.png')" }}></div>
                             </div>
 
                             {/* Mobile Card 1 */}
-                            <div className="absolute w-[80px] sm:w-[105px] h-[160px] sm:h-[210px] bg-black border-[2px] sm:border-[5px] border-[#2a2a2a] rounded-[15px] sm:rounded-[20px] shadow-2xl transform -rotate-[15deg] -translate-x-[55px] sm:-translate-x-[105px] translate-y-7 sm:translate-y-12 hover:-translate-y-2 hover:z-[60] z-20 transition duration-500 ease-out flex flex-col items-center justify-start overflow-hidden">
+                            <div className="absolute w-[105px] h-[210px] bg-black border-[5px] border-[#2a2a2a] rounded-[20px] shadow-2xl transform -rotate-[15deg] -translate-x-[105px] translate-y-12 hover:-translate-y-2 hover:z-[60] z-20 transition duration-500 ease-out flex flex-col items-center justify-start overflow-hidden">
                                 <div className="w-full h-full bg-cover bg-center" style={{ backgroundImage: "url('/proj-phone/1.jpeg')" }}></div>
                             </div>
 
                             {/* Mobile Card 2 */}
-                            <div className="absolute w-[80px] sm:w-[105px] h-[160px] sm:h-[210px] bg-black border-[2px] sm:border-[5px] border-[#2a2a2a] rounded-[15px] sm:rounded-[20px] shadow-2xl transform -rotate-[5deg] -translate-x-[15px] sm:-translate-x-[35px] translate-y-4 sm:translate-y-6 hover:-translate-y-2 hover:z-[60] z-30 transition duration-500 ease-out flex flex-col items-center justify-start overflow-hidden">
+                            <div className="absolute w-[105px] h-[210px] bg-black border-[5px] border-[#2a2a2a] rounded-[20px] shadow-2xl transform -rotate-[5deg] -translate-x-[35px] translate-y-6 hover:-translate-y-2 hover:z-[60] z-30 transition duration-500 ease-out flex flex-col items-center justify-start overflow-hidden">
                                 <div className="w-full h-full bg-cover bg-center" style={{ backgroundImage: "url('/proj-phone/image.png')" }}></div>
                             </div>
 
                             {/* Mobile Card 3 */}
-                            <div className="absolute w-[80px] sm:w-[105px] h-[160px] sm:h-[210px] bg-black border-[2px] sm:border-[5px] border-[#2a2a2a] rounded-[15px] sm:rounded-[20px] shadow-2xl transform rotate-[5deg] translate-x-[20px] sm:translate-x-[35px] translate-y-4 sm:translate-y-6 hover:-translate-y-2 hover:z-[60] z-40 transition duration-500 ease-out flex flex-col items-center justify-start overflow-hidden">
+                            <div className="absolute w-[105px] h-[210px] bg-black border-[5px] border-[#2a2a2a] rounded-[20px] shadow-2xl transform rotate-[5deg] translate-x-[35px] translate-y-6 hover:-translate-y-2 hover:z-[60] z-40 transition duration-500 ease-out flex flex-col items-center justify-start overflow-hidden">
                                 <div className="w-full h-full bg-cover bg-center" style={{ backgroundImage: "url('/proj-phone/image copy.png')" }}></div>
                             </div>
 
                             {/* Mobile Card 4 */}
-                            <div className="absolute w-[80px] sm:w-[105px] h-[160px] sm:h-[210px] bg-black border-[2px] sm:border-[5px] border-[#2a2a2a] rounded-[15px] sm:rounded-[20px] shadow-2xl transform rotate-[15deg] translate-x-[55px] sm:translate-x-[105px] translate-y-7 sm:translate-y-12 hover:-translate-y-2 hover:z-[60] z-30 transition duration-500 ease-out flex flex-col items-center justify-start overflow-hidden">
+                            <div className="absolute w-[105px] h-[210px] bg-black border-[5px] border-[#2a2a2a] rounded-[20px] shadow-2xl transform rotate-[15deg] translate-x-[105px] translate-y-12 hover:-translate-y-2 hover:z-[60] z-30 transition duration-500 ease-out flex flex-col items-center justify-start overflow-hidden">
                                 <div className="w-full h-full bg-cover bg-center" style={{ backgroundImage: "url('/proj-phone/image copy 2.png')" }}></div>
                             </div>
                         </div>
