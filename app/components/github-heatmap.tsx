@@ -1,9 +1,9 @@
 const LEVEL_COLORS = [
-    "var(--heatmap-0, #161b22)",   // level 0
-    "var(--heatmap-1, #0e4429)",   // level 1
-    "var(--heatmap-2, #40c463)",   // level 2
-    "var(--heatmap-3, #30a14e)",   // level 3
-    "var(--heatmap-4, #216e39)",   // level 4
+    "var(--heatmap-0, #161b22)", // level 0
+    "var(--heatmap-1, #0e4429)", // level 1
+    "var(--heatmap-2, #40c463)", // level 2
+    "var(--heatmap-3, #30a14e)", // level 3
+    "var(--heatmap-4, #216e39)", // level 4
 ] as const;
 
 const CELL_SIZE = 12;
@@ -14,20 +14,26 @@ type Contribution = { date: string; count: number; level: number };
 async function fetchContributions(username: string): Promise<Contribution[]> {
     const res = await fetch(
         `https://github-contributions-api.jogruber.de/v4/${username}?y=last`,
-        { next: { revalidate: 86400 } }
+        { next: { revalidate: 86400 } },
     );
     if (!res.ok) return [];
     const data = await res.json();
     return data.contributions ?? [];
 }
 
-export default async function GitHubHeatmap({ username }: { username: string }) {
+export default async function GitHubHeatmap({
+    username,
+}: {
+    username: string;
+}) {
     const contributions = await fetchContributions(username);
 
     if (contributions.length === 0) {
         return (
             <div>
-                <h3 className="text-xl font-bold font-mono tracking-widest uppercase mb-6 text-white">GITHUB ACTIVITY</h3>
+                <h3 className="text-sm font-mono tracking-widest text-[#898989] uppercase mb-6 ">
+                    GITHUB ACTIVITY
+                </h3>
                 <p className="text-sm text-gray-500 dark:text-gray-400">
                     Unable to load contribution data.
                 </p>
@@ -41,7 +47,9 @@ export default async function GitHubHeatmap({ username }: { username: string }) 
 
     return (
         <>
-            <h3 className="text-xl font-bold font-mono tracking-widest uppercase mb-6 text-white">GITHUB ACTIVITY</h3>
+            <h3 className="text-sm font-mono tracking-widest text-[#898989] uppercase mb-6">
+                GITHUB ACTIVITY
+            </h3>
             <div className="overflow-x-auto scrollbar-none">
                 <svg
                     width={width}
@@ -73,7 +81,6 @@ export default async function GitHubHeatmap({ username }: { username: string }) 
                     })}
                 </svg>
             </div>
-
         </>
     );
 }
