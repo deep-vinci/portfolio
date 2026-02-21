@@ -304,7 +304,7 @@ export default function HomeClient({
                         {/* Fields of Work */}
 
                         {/* Achievements - Highlighted & Moved Up */}
-                        <div className="mb-12 pt-10">
+                        <div className="mb-12 pt-5 ">
                             <h4 className="text-sm font-mono tracking-widest text-[#898989] uppercase mb-8">
                                 ACHIEVEMENTS
                             </h4>
@@ -375,7 +375,7 @@ export default function HomeClient({
                         </div>
 
                         {/* Internship */}
-                        <div className="mb-12 border-t border-[#1f1f1f] pt-12">
+                        <div className="mb-12 pt-5">
                             <h4 className="text-sm font-mono tracking-widest text-[#898989] uppercase mb-8">
                                 EXPERIENCE
                             </h4>
@@ -481,53 +481,70 @@ export default function HomeClient({
                             </div>
                         </div>
 
-                        {/* What I Build */}
-                        <div className="mb-12 border-t border-[#1f1f1f] pt-12">
+                        {/* Stacks */}
+                        <div className="mb-12 pt-12">
                             <h4 className="text-sm font-mono tracking-widest text-[#898989] uppercase mb-8">
-                                WHAT I BUILD
+                                STACKS
                             </h4>
-                            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-y-6 gap-x-6 text-sm font-medium">
-                                <div className="flex items-center gap-3 text-[#d4d4d4]">
-                                    <span className="text-[#888] font-light text-lg pb-[2px]">
-                                        +
-                                    </span>{" "}
-                                    Fullstack Web Apps
-                                </div>
-                                <div className="flex items-center gap-3 text-[#d4d4d4]">
-                                    <span className="text-[#888] font-light text-lg pb-[2px]">
-                                        +
-                                    </span>{" "}
-                                    Android Apps
-                                </div>
-                                <div className="flex items-center gap-3 text-[#d4d4d4]">
-                                    <span className="text-[#888] font-light text-lg pb-[2px]">
-                                        +
-                                    </span>{" "}
-                                    System Architectures
-                                </div>
-                                <div className="flex items-center gap-3 text-[#d4d4d4]">
-                                    <span className="text-[#888] font-light text-lg pb-[2px]">
-                                        +
-                                    </span>{" "}
-                                    3D Visualizations
-                                </div>
-                                <div className="flex items-center gap-3 text-[#d4d4d4]">
-                                    <span className="text-[#888] font-light text-lg pb-[2px]">
-                                        +
-                                    </span>{" "}
-                                    Interactive Maps
-                                </div>
-                                <div className="flex items-center gap-3 text-[#d4d4d4]">
-                                    <span className="text-[#888] font-light text-lg pb-[2px]">
-                                        +
-                                    </span>{" "}
-                                    APIs & Backends
-                                </div>
+                            <div className="grid grid-cols-2 lg:grid-cols-3 gap-y-6 gap-x-6 text-sm font-medium">
+                                {[
+                                    {
+                                        name: "React",
+                                        icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg",
+                                    },
+                                    {
+                                        name: "React Native",
+                                        icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg",
+                                    },
+                                    {
+                                        name: "Next.js",
+                                        icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nextjs/nextjs-original.svg",
+                                        invert: true,
+                                    },
+                                    {
+                                        name: "TypeScript",
+                                        icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/typescript/typescript-original.svg",
+                                    },
+                                    {
+                                        name: "Java",
+                                        icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/java/java-original.svg",
+                                    },
+                                    {
+                                        name: "Kotlin",
+                                        icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/kotlin/kotlin-original.svg",
+                                    },
+                                    {
+                                        name: "Python",
+                                        icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg",
+                                    },
+                                    {
+                                        name: "PostgreSQL",
+                                        icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/postgresql/postgresql-original.svg",
+                                    },
+                                    {
+                                        name: "Docker",
+                                        icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/docker/docker-original.svg",
+                                    },
+                                ].map((stack) => (
+                                    <div
+                                        key={stack.name}
+                                        className="flex items-center gap-3 text-[#d4d4d4] group cursor-default"
+                                    >
+                                        <div className="w-10 h-10 rounded-xl bg-[#141414] border border-[#262626] flex items-center justify-center shadow-sm group-hover:border-[#333] group-hover:bg-[#1a1a1a] transition-all">
+                                            <img
+                                                src={stack.icon}
+                                                alt={stack.name}
+                                                className={`w-5 h-5 object-contain ${stack.invert ? "invert opacity-90" : ""}`}
+                                            />
+                                        </div>
+                                        <span>{stack.name}</span>
+                                    </div>
+                                ))}
                             </div>
                         </div>
 
                         {/* Domains */}
-                        <div className="mb-12 border-t border-[#1f1f1f] pt-12">
+                        <div className="mb-12 pt-12">
                             <h4 className="text-sm font-mono tracking-widest text-[#898989] uppercase mb-8">
                                 DOMAINS I'VE SHIPPED IN
                             </h4>
@@ -683,33 +700,6 @@ export default function HomeClient({
                                     </span>
                                     Hackathons
                                 </div>
-                            </div>
-                        </div>
-
-                        {/* Stacks */}
-                        <div className="mb-6 border-t border-[#1f1f1f] pt-12">
-                            <h4 className="text-sm font-mono tracking-widest text-[#898989] uppercase mb-8">
-                                STACKS
-                            </h4>
-                            <div className="flex flex-wrap gap-x-8 gap-y-4">
-                                <span className="text-sm font-medium text-[#d4d4d4]">
-                                    React / Next.js
-                                </span>
-                                <span className="text-sm font-medium text-[#d4d4d4]">
-                                    Java / Kotlin
-                                </span>
-                                <span className="text-sm font-medium text-[#d4d4d4]">
-                                    TypeScript
-                                </span>
-                                <span className="text-sm font-medium text-[#d4d4d4]">
-                                    Docker
-                                </span>
-                                <span className="text-sm font-medium text-[#d4d4d4]">
-                                    PostgreSQL
-                                </span>
-                                <span className="text-sm font-medium text-[#d4d4d4]">
-                                    Python
-                                </span>
                             </div>
                         </div>
                     </div>
