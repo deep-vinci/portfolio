@@ -8,9 +8,20 @@ type ProjectInfo = {
     logo: string;
     date: string;
     tags?: string[];
+    inProgress?: boolean;
 };
 
 const projectInfo: ProjectInfo[] = [
+    {
+        id: 0,
+        name: "DeepDB (LSM Engine)",
+        url: "https://github.com/deep-vinci/SimpleWAL",
+        desc: "A custom Log-Structured Merge (LSM) Tree database engine built from scratch. Implements an efficient Write-Ahead Logger (WAL) and MemTables in Java for high-performance durability and sequential writes.",
+        logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/java/java-original.svg",
+        date: "2025",
+        tags: ["Java", "Systems", "Databases"],
+        inProgress: true,
+    },
     {
         id: 1,
         name: "Campus find",
@@ -95,14 +106,8 @@ export default function Projects() {
                 </p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+            <div className="columns-1 sm:columns-2 gap-5 w-full">
                 {projectInfo.map((project, idx) => {
-                    // Creating a masonry/bento style layout
-                    // Making indices 0, 3, and 5 span double width conditionally
-                    const isLarge = idx === 0 || idx === 3 || idx === 5;
-                    const spanClass = isLarge
-                        ? "md:col-span-2 lg:col-span-2"
-                        : "col-span-1";
                     const isUpcoming =
                         project.name === "Nexus Core" ||
                         project.name === "QuantForge";
@@ -110,7 +115,7 @@ export default function Projects() {
                     return (
                         <div
                             key={project.name}
-                            className={`${spanClass} flex flex-col justify-between bg-[#131313] border border-[#222222] rounded-2xl p-6 transition-all duration-500 hover:bg-[#1a1a1a] hover:-translate-y-1 hover:border-[#333333] hover:shadow-2xl hover:shadow-[#10b981]/5 ${!isUpcoming ? "cursor-pointer" : "cursor-default"} group relative overflow-hidden`}
+                            className={`break-inside-avoid mb-5 flex flex-col justify-between bg-[#131313] border border-[#222222] rounded-2xl p-6 transition-all duration-500 hover:bg-[#1a1a1a] hover:-translate-y-1 hover:border-[#333333] hover:shadow-2xl hover:shadow-[#10b981]/5 ${!isUpcoming ? "cursor-pointer" : "cursor-default"} group relative overflow-hidden`}
                             onClick={() => {
                                 if (project.url && !isUpcoming) {
                                     window.open(project.url, "_blank");
@@ -127,6 +132,15 @@ export default function Projects() {
                                 <div className="absolute inset-0 z-20 backdrop-blur-sm bg-[#131313]/50 flex items-center justify-center">
                                     <span className="text-white font-mono font-bold tracking-[0.2em] border border-[#333] px-4 py-2 rounded-full bg-[#1a1a1a]/80 shadow-2xl uppercase">
                                         UPCOMING
+                                    </span>
+                                </div>
+                            )}
+
+                            {/* In Progress Overlay / Badge */}
+                            {project.inProgress && !isUpcoming && (
+                                <div className="absolute top-4 right-4 z-20">
+                                    <span className="text-[#f59e0b] text-[10px] font-mono font-bold tracking-[0.1em] border border-[#f59e0b]/30 px-3 py-1 rounded-full bg-[#f59e0b]/10 uppercase shadow-sm">
+                                        IN PROGRESS
                                     </span>
                                 </div>
                             )}
