@@ -20,7 +20,7 @@ const projectInfo: ProjectInfo[] = [
         logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/java/java-original.svg",
         date: "2025",
         tags: ["Java", "Systems", "Databases"],
-        inProgress: true,
+        inProgress: false,
     },
     {
         id: 1,
