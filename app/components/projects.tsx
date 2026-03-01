@@ -14,9 +14,9 @@ type ProjectInfo = {
 const projectInfo: ProjectInfo[] = [
     {
         id: 0,
-        name: "DeepDB (LSM Engine)",
-        url: "https://github.com/deep-vinci/SimpleWAL",
-        desc: "A custom Log-Structured Merge (LSM) Tree database engine built from scratch. Implements an efficient Write-Ahead Logger (WAL) and MemTables in Java for high-performance durability and sequential writes.",
+        name: "FlushDB (LSM Tree Database)",
+        url: "https://github.com/deep-vinci/FlushDB",
+        desc: "A custom Log-Structured Merge (LSM) Tree database engine built from scratch. Implements an efficient Write-Ahead Logger (WAL) and MemTables and a SSTable in Java for high-performance durability and sequential writes.",
         logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/java/java-original.svg",
         date: "2025",
         tags: ["Java", "Systems", "Databases"],
@@ -90,7 +90,7 @@ const projectInfo: ProjectInfo[] = [
         logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/c/c-original.svg",
         date: "2025",
         tags: ["C", "Systems", "Low-level"],
-    }
+    },
 ];
 
 export default function Projects() {
@@ -155,8 +155,8 @@ export default function Projects() {
                                         style={
                                             project.logo
                                                 ? {
-                                                    backgroundImage: `url(${project.logo})`,
-                                                }
+                                                      backgroundImage: `url(${project.logo})`,
+                                                  }
                                                 : {}
                                         }
                                     >
