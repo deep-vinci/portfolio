@@ -64,6 +64,19 @@ const projectInfo: ProjectInfo[] = [
         screenshots: ["/work-ss/gitview/Screenshot 2026-03-17 023830.png"],
     },
     {
+        id: 10,
+        name: "Humanoid Defense Robot (UI)",
+        url: "https://web-worriers.vercel.app/",
+        desc: "Immersive defense platform portal UI for India's indigenous humanoid army robot. Features an interactive 3D robot model, live telemetry readouts, an globe tracking, cinematic scroll-driven storytelling.",
+        logo: "",
+        date: "2025",
+        tags: ["Next.js", "Three.js", "3D"],
+        category: "website",
+        screenshots: [
+            "/work-ss/robot-website/Screenshot 2026-03-17 025016.png",
+        ],
+    },
+    {
         id: 4,
         name: "Medical Emergency Service",
         desc: "An Android application designed to provide immediate assistance during medical emergencies, routing users dynamically to PHC, CHC, or District Hospitals based on severity.",
