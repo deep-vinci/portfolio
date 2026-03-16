@@ -16,6 +16,7 @@ type ProjectInfo = {
     tags?: string[];
     inProgress?: boolean;
     category?: Category;
+    screenshots?: string[];
 };
 
 const projectInfo: ProjectInfo[] = [
@@ -67,6 +68,11 @@ const projectInfo: ProjectInfo[] = [
         date: "2025",
         tags: ["Android", "Java", "Maps"],
         category: "app",
+        screenshots: [
+            "/work-ss/medical-emergency-service/Screenshot_20260317_013342.jpg",
+            "/work-ss/medical-emergency-service/Screenshot_20260317_013350.jpg",
+            "/work-ss/medical-emergency-service/Screenshot_20260317_013414.jpg",
+        ],
     },
     {
         id: 7,
@@ -77,6 +83,25 @@ const projectInfo: ProjectInfo[] = [
         date: "2025",
         tags: ["Android", "Kotlin", "NASA API"],
         category: "app",
+        screenshots: [
+            "/work-ss/apod-app/Screenshot_20260317_020325.jpg",
+            "/work-ss/apod-app/Screenshot_20260317_020329.jpg",
+            "/work-ss/apod-app/Screenshot_20260317_020334.jpg",
+        ],
+    },
+    {
+        id: 9,
+        name: "Pickleball",
+        desc: "A fast-paced 2D pickleball game built with React Native and React Native Skia for GPU-accelerated canvas rendering. Features real-time physics simulation, smooth 60fps gameplay, and a polished mobile-first UI.",
+        logo: "",
+        date: "2025",
+        tags: ["React Native", "Skia", "Game Dev"],
+        category: "app",
+        screenshots: [
+            "/work-ss/pickleball-game/Screenshot_20260317_015904.jpg",
+            "/work-ss/pickleball-game/Screenshot_20260317_015910.jpg",
+            "/work-ss/pickleball-game/Screenshot_20260317_015915.jpg",
+        ],
     },
     {
         id: 8,
@@ -300,6 +325,29 @@ export default function Projects() {
                             )}
 
                             <div className="z-10 flex flex-col h-full">
+                                {/* Screenshot Strip */}
+                                {project.screenshots &&
+                                    project.screenshots.length > 0 &&
+                                    !isUpcoming && (
+                                        <div className="flex gap-2 -mx-6 -mt-6 mb-5 px-3 pt-3 pb-3 bg-[#0a0a0a] border-b border-[#1c1c1c] rounded-t-2xl overflow-hidden">
+                                            {project.screenshots.map(
+                                                (src, i) => (
+                                                    <div
+                                                        key={i}
+                                                        className="flex-1 rounded-lg overflow-hidden ring-1 ring-white/[0.06] aspect-[9/18] bg-[#111]"
+                                                    >
+                                                        <img
+                                                            src={src}
+                                                            alt={`${project.name} screenshot ${i + 1}`}
+                                                            className="w-full h-full object-cover object-top"
+                                                            draggable={false}
+                                                        />
+                                                    </div>
+                                                ),
+                                            )}
+                                        </div>
+                                    )}
+
                                 {/* Header: Logo & Right Meta Column */}
                                 <div
                                     className={`flex items-start justify-between mb-5 ${isUpcoming ? "opacity-50 blur-sm" : ""}`}
