@@ -39,6 +39,7 @@ const projectInfo: ProjectInfo[] = [
         date: "2025",
         tags: ["Next.js", "WebGL", "Supabase"],
         category: "website",
+        screenshots: ["/work-ss/campus-find/Screenshot 2026-03-17 024352.png"],
     },
     {
         id: 2,
@@ -49,6 +50,7 @@ const projectInfo: ProjectInfo[] = [
         date: "2025",
         tags: ["React", "Data Viz", "Gamification"],
         category: "website",
+        screenshots: ["/work-ss/the-hundred/Screenshot 2026-03-17 023629.png"],
     },
     {
         id: 3,
@@ -59,6 +61,7 @@ const projectInfo: ProjectInfo[] = [
         date: "2025",
         tags: ["3D", "GitHub API", "Three.js"],
         category: "website",
+        screenshots: ["/work-ss/gitview/Screenshot 2026-03-17 023830.png"],
     },
     {
         id: 4,
@@ -325,9 +328,33 @@ export default function Projects() {
                             )}
 
                             <div className="z-10 flex flex-col h-full">
-                                {/* Screenshot Strip */}
+                                {/* Desktop Screenshot — browser mockup */}
                                 {project.screenshots &&
-                                    project.screenshots.length > 0 &&
+                                    project.screenshots.length === 1 &&
+                                    !isUpcoming && (
+                                        <div className="-mx-6 -mt-6 mb-5 bg-[#0a0a0a] border-b border-[#1c1c1c] rounded-t-2xl overflow-hidden">
+                                            {/* Browser chrome bar */}
+                                            <div className="flex items-center gap-1.5 px-3 h-7 bg-[#0e0e0e] border-b border-[#1a1a1a]">
+                                                <div className="w-2 h-2 rounded-full bg-[#2a2a2a]" />
+                                                <div className="w-2 h-2 rounded-full bg-[#2a2a2a]" />
+                                                <div className="w-2 h-2 rounded-full bg-[#2a2a2a]" />
+                                                <div className="ml-2 flex-1 h-3.5 rounded-sm bg-[#171717] border border-[#232323]" />
+                                            </div>
+                                            {/* Screenshot */}
+                                            <div className="aspect-[16/9] overflow-hidden">
+                                                <img
+                                                    src={project.screenshots[0]}
+                                                    alt={`${project.name} screenshot`}
+                                                    className="w-full h-full object-cover object-top"
+                                                    draggable={false}
+                                                />
+                                            </div>
+                                        </div>
+                                    )}
+
+                                {/* Mobile Screenshots — portrait strip */}
+                                {project.screenshots &&
+                                    project.screenshots.length > 1 &&
                                     !isUpcoming && (
                                         <div className="flex gap-2 -mx-6 -mt-6 mb-5 px-3 pt-3 pb-3 bg-[#0a0a0a] border-b border-[#1c1c1c] rounded-t-2xl overflow-hidden">
                                             {project.screenshots.map(
