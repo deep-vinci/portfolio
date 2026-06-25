@@ -10,7 +10,7 @@ export const metadata: Metadata = {
         type: 'website',
         images: [
             {
-                url: '/resume-meta.png',
+                url: '/Deepak_Jha.png',
                 width: 1200,
                 height: 630,
                 alt: 'Resume Preview',
@@ -21,11 +21,11 @@ export const metadata: Metadata = {
         card: 'summary_large_image',
         title: 'Resume | deepvinci',
         description: 'View my resume - Fullstack Developer and Engineering Student',
-        images: ['/resume-meta.png'],
+        images: ['/Deepak_Jha.png'],
     },
 };
 
 export default function ResumePage() {
-    redirect('/resume-meta.pdf');
+    redirect('/Deepak_Jha_Resume_jun.pdf');
 }
 
