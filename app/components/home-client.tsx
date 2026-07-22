@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "motion/react";
+import HoverBubble from "./heatmap-hover";
 
 export default function HomeClient({
     children,
@@ -157,7 +158,8 @@ export default function HomeClient({
                     {/* Desktop sm+: fanned layout */}
                     <div className="hidden sm:flex relative h-[260px] w-full mb-12 mt-4 justify-center items-center overflow-x-visible">
                         {/* Desktop Card 1 - Left/Back */}
-                        <div className="absolute w-[252px] h-[158px] bg-[#1a1a1a] border border-[#2e2e2e] rounded-xl shadow-2xl transform -rotate-[12deg] -translate-x-[100px] -translate-y-9 hover:-translate-y-5 hover:z-[60] transition duration-500 ease-out flex flex-col items-center justify-start overflow-hidden">
+                        <div className="group absolute w-[252px] h-[158px] transform -rotate-[12deg] -translate-x-[100px] -translate-y-9 hover:z-[60]">
+                        <div className="w-full h-full bg-[#1a1a1a] border border-[#2e2e2e] rounded-xl shadow-2xl group-hover:translate-y-4 transition duration-500 ease-out flex flex-col items-center justify-start overflow-hidden">
                             <div className="w-full h-6 flex-shrink-0 border-b border-[#2e2e2e] flex items-center px-2 gap-1.5 bg-[#141414]">
                                 <div className="w-2 h-2 rounded-full bg-[#3a3a3a]"></div>
                                 <div className="w-2 h-2 rounded-full bg-[#3a3a3a]"></div>
@@ -171,9 +173,11 @@ export default function HomeClient({
                                 }}
                             ></div>
                         </div>
+                        </div>
 
                         {/* Desktop Card 2 - Right/Back */}
-                        <div className="absolute w-[252px] h-[158px] bg-[#222222] border border-[#363636] rounded-xl shadow-2xl transform rotate-[12deg] translate-x-[100px] -translate-y-9 hover:-translate-y-5 z-10 hover:z-[60] transition duration-500 ease-out flex flex-col items-center justify-start overflow-hidden">
+                        <div className="group absolute w-[252px] h-[158px] transform rotate-[12deg] translate-x-[100px] -translate-y-9 z-10 hover:z-[60]">
+                        <div className="w-full h-full bg-[#222222] border border-[#363636] rounded-xl shadow-2xl group-hover:translate-y-4 transition duration-500 ease-out flex flex-col items-center justify-start overflow-hidden">
                             <div className="w-full h-6 flex-shrink-0 border-b border-[#363636] flex items-center px-2 gap-1.5 bg-[#1c1c1c]">
                                 <div className="w-2 h-2 rounded-full bg-[#4a4a4a]"></div>
                                 <div className="w-2 h-2 rounded-full bg-[#4a4a4a]"></div>
@@ -187,9 +191,11 @@ export default function HomeClient({
                                 }}
                             ></div>
                         </div>
+                        </div>
 
                         {/* Mobile Card 1 */}
-                        <div className="absolute w-[95px] h-[189px] bg-black border-[5px] border-[#2a2a2a] rounded-[20px] shadow-2xl transform -rotate-[15deg] -translate-x-[105px] translate-y-12 hover:-translate-y-2 hover:z-[60] z-20 transition duration-500 ease-out flex flex-col items-center justify-start overflow-hidden">
+                        <div className="group absolute w-[95px] h-[189px] transform -rotate-[15deg] -translate-x-[105px] translate-y-12 hover:z-[60] z-20">
+                        <div className="w-full h-full bg-black border-[5px] border-[#2a2a2a] rounded-[20px] shadow-2xl group-hover:-translate-y-14 transition duration-500 ease-out flex flex-col items-center justify-start overflow-hidden">
                             <div
                                 className="w-full h-full bg-cover bg-center"
                                 style={{
@@ -198,9 +204,11 @@ export default function HomeClient({
                                 }}
                             ></div>
                         </div>
+                        </div>
 
                         {/* Mobile Card 2 */}
-                        <div className="absolute w-[95px] h-[189px] bg-black border-[5px] border-[#2a2a2a] rounded-[20px] shadow-2xl transform -rotate-[5deg] -translate-x-[35px] translate-y-6 hover:-translate-y-2 hover:z-[60] z-30 transition duration-500 ease-out flex flex-col items-center justify-start overflow-hidden">
+                        <div className="group absolute w-[95px] h-[189px] transform -rotate-[5deg] -translate-x-[35px] translate-y-6 hover:z-[60] z-30">
+                        <div className="w-full h-full bg-black border-[5px] border-[#2a2a2a] rounded-[20px] shadow-2xl group-hover:-translate-y-8 transition duration-500 ease-out flex flex-col items-center justify-start overflow-hidden">
                             <div
                                 className="w-full h-full bg-cover bg-center"
                                 style={{
@@ -209,9 +217,11 @@ export default function HomeClient({
                                 }}
                             ></div>
                         </div>
+                        </div>
 
                         {/* Mobile Card 3 */}
-                        <div className="absolute w-[95px] h-[189px] bg-black border-[5px] border-[#2a2a2a] rounded-[20px] shadow-2xl transform rotate-[5deg] translate-x-[35px] translate-y-6 hover:-translate-y-2 hover:z-[60] z-40 transition duration-500 ease-out flex flex-col items-center justify-start overflow-hidden">
+                        <div className="group absolute w-[95px] h-[189px] transform rotate-[5deg] translate-x-[35px] translate-y-6 hover:z-[60] z-40">
+                        <div className="w-full h-full bg-black border-[5px] border-[#2a2a2a] rounded-[20px] shadow-2xl group-hover:-translate-y-8 transition duration-500 ease-out flex flex-col items-center justify-start overflow-hidden">
                             <div
                                 className="w-full h-full bg-cover bg-center"
                                 style={{
@@ -220,9 +230,11 @@ export default function HomeClient({
                                 }}
                             ></div>
                         </div>
+                        </div>
 
                         {/* Mobile Card 4 */}
-                        <div className="absolute w-[95px] h-[189px] bg-black border-[5px] border-[#2a2a2a] rounded-[20px] shadow-2xl transform rotate-[15deg] translate-x-[105px] translate-y-12 hover:-translate-y-2 hover:z-[60] z-30 transition duration-500 ease-out flex flex-col items-center justify-start overflow-hidden">
+                        <div className="group absolute w-[95px] h-[189px] transform rotate-[15deg] translate-x-[105px] translate-y-12 hover:z-[60] z-30">
+                        <div className="w-full h-full bg-black border-[5px] border-[#2a2a2a] rounded-[20px] shadow-2xl group-hover:-translate-y-14 transition duration-500 ease-out flex flex-col items-center justify-start overflow-hidden">
                             <div
                                 className="w-full h-full bg-cover bg-center"
                                 style={{
@@ -230,6 +242,7 @@ export default function HomeClient({
                                         "url('/proj-phone/image copy 2.png')",
                                 }}
                             ></div>
+                        </div>
                         </div>
                     </div>
                     <div className="mt-20 mb-10 lg:mt-auto">
@@ -309,7 +322,11 @@ export default function HomeClient({
                                 ACHIEVEMENTS
                             </h4>
                             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                                <div className="relative group bg-[#111] border border-[#222] rounded-2xl p-5 overflow-hidden hover:border-[#333] transition-colors cursor-default">
+                                <HoverBubble
+                                    text="check out linkedin post"
+                                    href="https://www.linkedin.com/feed/update/urn:li:activity:7471729453610573824/"
+                                >
+                                <div className="relative group bg-[#111] border border-[#222] rounded-2xl p-5 overflow-hidden hover:border-[#333] transition-colors">
                                     <div className="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
                                         <svg
                                             width="40"
@@ -343,8 +360,13 @@ export default function HomeClient({
                                         solution.
                                     </p>
                                 </div>
+                                </HoverBubble>
 
-                                <div className="relative group bg-[#111] border border-[#222] rounded-2xl p-5 overflow-hidden hover:border-[#333] transition-colors cursor-default">
+                                <HoverBubble
+                                    text="view certificate"
+                                    href="/certificates/sih-25.pdf"
+                                >
+                                <div className="relative group bg-[#111] border border-[#222] rounded-2xl p-5 overflow-hidden hover:border-[#333] transition-colors">
                                     <div className="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
                                         <svg
                                             width="40"
@@ -377,8 +399,13 @@ export default function HomeClient({
                                         among 730 competing teams.
                                     </p>
                                 </div>
+                                </HoverBubble>
 
-                                <div className="relative group bg-[#111] border border-[#222] rounded-2xl p-5 overflow-hidden hover:border-[#333] transition-colors cursor-default">
+                                <HoverBubble
+                                    text="check out linkedin post"
+                                    href="https://www.linkedin.com/posts/deepakwork_techexpo2026-androidapp-development-activity-7425721838833385472-Kbjt"
+                                >
+                                <div className="relative group bg-[#111] border border-[#222] rounded-2xl p-5 overflow-hidden hover:border-[#333] transition-colors">
                                     <div className="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
                                         <svg
                                             width="40"
@@ -406,6 +433,7 @@ export default function HomeClient({
                                         project architecture and UX.
                                     </p>
                                 </div>
+                                </HoverBubble>
                             </div>
                         </div>
 

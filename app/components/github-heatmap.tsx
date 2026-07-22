@@ -1,3 +1,5 @@
+import HeatmapHover from "./heatmap-hover";
+
 const LEVEL_COLORS = [
     "var(--heatmap-0, #161b22)", // level 0
     "var(--heatmap-1, #0e4429)", // level 1
@@ -50,7 +52,8 @@ export default async function GitHubHeatmap({
             <h3 className="text-sm font-mono tracking-widest text-[#898989] uppercase mb-6">
                 GITHUB ACTIVITY
             </h3>
-            <div className="overflow-x-auto scrollbar-none">
+            <HeatmapHover>
+                <div className="overflow-x-auto scrollbar-none">
                 <svg
                     width={width}
                     height={height}
@@ -80,7 +83,8 @@ export default async function GitHubHeatmap({
                         );
                     })}
                 </svg>
-            </div>
+                </div>
+            </HeatmapHover>
         </>
     );
 }
