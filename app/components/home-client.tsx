@@ -350,9 +350,164 @@ export default function HomeClient({
                     <div className="w-full lg:max-w-xl lg:ml-auto">
                         {children}
 
-                        {/* Fields of Work */}
+                        {/* Experience - first thing recruiters see */}
+                        <div className="mb-12 pt-5">
+                            <h4 className="text-sm font-mono tracking-widest text-[#898989] uppercase mb-8">
+                                EXPERIENCE
+                            </h4>
+                            <div className="flex flex-col gap-6">
+                                <HoverBubble text="currently interning here, building cool industrial softwares">
+                                <div className="group relative bg-[#111] border border-[#222] hover:border-[#333] rounded-2xl p-6 transition-all duration-300 cursor-pointer overflow-hidden">
+                                    <div className="flex justify-between items-start mb-2">
+                                        <div>
+                                            <h5 className="text-white text-lg font-bold mb-1">
+                                                Fullstack Developer
+                                            </h5>
+                                            <div className="text-[#10b981] font-mono text-xs font-bold tracking-widest uppercase mb-1 opacity-80">
+                                                Cracktier Technologies •
+                                                Internship
+                                            </div>
+                                            <div className="text-[#666] font-mono text-xs tracking-wide mb-4">
+                                                May 2026 – Ongoing · Vadodara,
+                                                Gujarat, India
+                                            </div>
+                                        </div>
+                                        <div className="text-[#888] group-hover:text-white transition-colors duration-300 transform group-hover:rotate-180">
+                                            <svg
+                                                width="20"
+                                                height="20"
+                                                viewBox="0 0 24 24"
+                                                fill="none"
+                                                stroke="currentColor"
+                                                strokeWidth="2"
+                                                strokeLinecap="round"
+                                                strokeLinejoin="round"
+                                            >
+                                                <polyline points="6 9 12 15 18 9"></polyline>
+                                            </svg>
+                                        </div>
+                                    </div>
 
-                        {/* Achievements - Highlighted & Moved Up */}
+                                    <p className="text-[#888] text-sm leading-relaxed mb-4">
+                                        Engineering and maintaining scalable
+                                        hostel management and ERP modules in
+                                        Node.js, streamlining student operations
+                                        and administrative workflows.
+                                    </p>
+                                </div>
+                                </HoverBubble>
+                                <HoverBubble text="worked with ar technologies in kotlin and java">
+                                <div className="group relative bg-[#111] border border-[#222] hover:border-[#333] rounded-2xl p-6 transition-all duration-300 cursor-pointer overflow-hidden">
+                                    <div className="flex justify-between items-start mb-2">
+                                        <div>
+                                            <h5 className="text-white text-lg font-bold mb-1">
+                                                Android Developer
+                                            </h5>
+                                            <div className="text-[#10b981] font-mono text-xs font-bold tracking-widest uppercase mb-1 opacity-80">
+                                                Tinkering Hub, Parul University
+                                                • Internship
+                                            </div>
+                                            <div className="text-[#666] font-mono text-xs tracking-wide mb-4">
+                                                Nov 2025 – Dec 2025 · 2 mos ·
+                                                Vadodara, Gujarat, India ·
+                                                On-site
+                                            </div>
+                                        </div>
+                                        <div className="text-[#888] group-hover:text-white transition-colors duration-300 transform group-hover:rotate-180">
+                                            <svg
+                                                width="20"
+                                                height="20"
+                                                viewBox="0 0 24 24"
+                                                fill="none"
+                                                stroke="currentColor"
+                                                strokeWidth="2"
+                                                strokeLinecap="round"
+                                                strokeLinejoin="round"
+                                            >
+                                                <polyline points="6 9 12 15 18 9"></polyline>
+                                            </svg>
+                                        </div>
+                                    </div>
+
+                                    <p className="text-[#888] text-sm leading-relaxed mb-4">
+                                        Worked on ARCore Cloud Anchors,
+                                        Geospatial API, and automated 360°
+                                        panorama pipelines for immersive AR/VR
+                                        experiences.
+                                    </p>
+
+                                    <div className="grid grid-rows-[0fr] group-hover:grid-rows-[1fr] transition-[grid-template-rows] duration-500 ease-out">
+                                        <div className="overflow-hidden">
+                                            <div className="pt-4 border-t border-[#222] mt-2 flex flex-col gap-3">
+                                                <div className="flex items-start gap-3">
+                                                    <span className="text-[#10b981] mt-0.5 opacity-70">
+                                                        ✦
+                                                    </span>
+                                                    <span className="text-[#a0a0a0] text-sm">
+                                                        Worked extensively with
+                                                        Google ARCore Cloud
+                                                        Anchors as well as
+                                                        Geospatial API, enabling
+                                                        persistent and shared AR
+                                                        experiences across
+                                                        devices and sessions.
+                                                    </span>
+                                                </div>
+                                                <div className="flex items-start gap-3">
+                                                    <span className="text-[#10b981] mt-0.5 opacity-70">
+                                                        ✦
+                                                    </span>
+                                                    <span className="text-[#a0a0a0] text-sm">
+                                                        Implemented a suite of
+                                                        isolated CLI tools into
+                                                        a cohesive, automated
+                                                        web pipeline for
+                                                        end-to-end 360° panorama
+                                                        generation using Hugin
+                                                        for immersive AR/VR use
+                                                        cases.
+                                                    </span>
+                                                </div>
+                                                <div className="flex items-start gap-3">
+                                                    <span className="text-[#10b981] mt-0.5 opacity-70">
+                                                        ✦
+                                                    </span>
+                                                    <span className="text-[#a0a0a0] text-sm">
+                                                        Built an Android
+                                                        application to host,
+                                                        detect, and resolve
+                                                        Cloud Anchors allowing
+                                                        independent validation
+                                                        and debugging of
+                                                        multi-user AR workflows.
+                                                    </span>
+                                                </div>
+                                                <div className="flex items-start gap-3">
+                                                    <span className="text-[#10b981] mt-0.5 opacity-70">
+                                                        ✦
+                                                    </span>
+                                                    <span className="text-[#a0a0a0] text-sm">
+                                                        Conducted research and
+                                                        experimentation with
+                                                        HLOC (Hierarchical
+                                                        Localization) as a
+                                                        potential replacement
+                                                        for ARCore Geospatial
+                                                        API, evaluating visual
+                                                        localization accuracy,
+                                                        scalability, and
+                                                        deployment feasibility.
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                </HoverBubble>
+                            </div>
+                        </div>
+
+                        {/* Achievements */}
                         <div className="mb-12 pt-5 ">
                             <h4 className="text-sm font-mono tracking-widest text-[#898989] uppercase mb-8">
                                 ACHIEVEMENTS
@@ -470,159 +625,6 @@ export default function HomeClient({
                                     </p>
                                 </div>
                                 </HoverBubble>
-                            </div>
-                        </div>
-
-                        {/* Internship */}
-                        <div className="mb-12 pt-5">
-                            <h4 className="text-sm font-mono tracking-widest text-[#898989] uppercase mb-8">
-                                EXPERIENCE
-                            </h4>
-                            <div className="flex flex-col gap-6">
-                                <div className="group relative bg-[#111] border border-[#222] hover:border-[#333] rounded-2xl p-6 transition-all duration-300 cursor-pointer overflow-hidden">
-                                    <div className="flex justify-between items-start mb-2">
-                                        <div>
-                                            <h5 className="text-white text-lg font-bold mb-1">
-                                                Fullstack Developer
-                                            </h5>
-                                            <div className="text-[#10b981] font-mono text-xs font-bold tracking-widest uppercase mb-1 opacity-80">
-                                                Cracktier Technologies •
-                                                Internship
-                                            </div>
-                                            <div className="text-[#666] font-mono text-xs tracking-wide mb-4">
-                                                May 2026 – Ongoing · Vadodara,
-                                                Gujarat, India
-                                            </div>
-                                        </div>
-                                        <div className="text-[#888] group-hover:text-white transition-colors duration-300 transform group-hover:rotate-180">
-                                            <svg
-                                                width="20"
-                                                height="20"
-                                                viewBox="0 0 24 24"
-                                                fill="none"
-                                                stroke="currentColor"
-                                                strokeWidth="2"
-                                                strokeLinecap="round"
-                                                strokeLinejoin="round"
-                                            >
-                                                <polyline points="6 9 12 15 18 9"></polyline>
-                                            </svg>
-                                        </div>
-                                    </div>
-
-                                    <p className="text-[#888] text-sm leading-relaxed mb-4">
-                                        Engineering and maintaining scalable
-                                        hostel management and ERP modules in
-                                        Node.js, streamlining student operations
-                                        and administrative workflows.
-                                    </p>
-                                </div>
-                                <div className="group relative bg-[#111] border border-[#222] hover:border-[#333] rounded-2xl p-6 transition-all duration-300 cursor-pointer overflow-hidden">
-                                    <div className="flex justify-between items-start mb-2">
-                                        <div>
-                                            <h5 className="text-white text-lg font-bold mb-1">
-                                                Android Developer
-                                            </h5>
-                                            <div className="text-[#10b981] font-mono text-xs font-bold tracking-widest uppercase mb-1 opacity-80">
-                                                Tinkering Hub, Parul University
-                                                • Internship
-                                            </div>
-                                            <div className="text-[#666] font-mono text-xs tracking-wide mb-4">
-                                                Nov 2025 – Dec 2025 · 2 mos ·
-                                                Vadodara, Gujarat, India ·
-                                                On-site
-                                            </div>
-                                        </div>
-                                        <div className="text-[#888] group-hover:text-white transition-colors duration-300 transform group-hover:rotate-180">
-                                            <svg
-                                                width="20"
-                                                height="20"
-                                                viewBox="0 0 24 24"
-                                                fill="none"
-                                                stroke="currentColor"
-                                                strokeWidth="2"
-                                                strokeLinecap="round"
-                                                strokeLinejoin="round"
-                                            >
-                                                <polyline points="6 9 12 15 18 9"></polyline>
-                                            </svg>
-                                        </div>
-                                    </div>
-
-                                    <p className="text-[#888] text-sm leading-relaxed mb-4">
-                                        Worked on ARCore Cloud Anchors,
-                                        Geospatial API, and automated 360°
-                                        panorama pipelines for immersive AR/VR
-                                        experiences.
-                                    </p>
-
-                                    <div className="grid grid-rows-[0fr] group-hover:grid-rows-[1fr] transition-[grid-template-rows] duration-500 ease-out">
-                                        <div className="overflow-hidden">
-                                            <div className="pt-4 border-t border-[#222] mt-2 flex flex-col gap-3">
-                                                <div className="flex items-start gap-3">
-                                                    <span className="text-[#10b981] mt-0.5 opacity-70">
-                                                        ✦
-                                                    </span>
-                                                    <span className="text-[#a0a0a0] text-sm">
-                                                        Worked extensively with
-                                                        Google ARCore Cloud
-                                                        Anchors as well as
-                                                        Geospatial API, enabling
-                                                        persistent and shared AR
-                                                        experiences across
-                                                        devices and sessions.
-                                                    </span>
-                                                </div>
-                                                <div className="flex items-start gap-3">
-                                                    <span className="text-[#10b981] mt-0.5 opacity-70">
-                                                        ✦
-                                                    </span>
-                                                    <span className="text-[#a0a0a0] text-sm">
-                                                        Implemented a suite of
-                                                        isolated CLI tools into
-                                                        a cohesive, automated
-                                                        web pipeline for
-                                                        end-to-end 360° panorama
-                                                        generation using Hugin
-                                                        for immersive AR/VR use
-                                                        cases.
-                                                    </span>
-                                                </div>
-                                                <div className="flex items-start gap-3">
-                                                    <span className="text-[#10b981] mt-0.5 opacity-70">
-                                                        ✦
-                                                    </span>
-                                                    <span className="text-[#a0a0a0] text-sm">
-                                                        Built an Android
-                                                        application to host,
-                                                        detect, and resolve
-                                                        Cloud Anchors allowing
-                                                        independent validation
-                                                        and debugging of
-                                                        multi-user AR workflows.
-                                                    </span>
-                                                </div>
-                                                <div className="flex items-start gap-3">
-                                                    <span className="text-[#10b981] mt-0.5 opacity-70">
-                                                        ✦
-                                                    </span>
-                                                    <span className="text-[#a0a0a0] text-sm">
-                                                        Conducted research and
-                                                        experimentation with
-                                                        HLOC (Hierarchical
-                                                        Localization) as a
-                                                        potential replacement
-                                                        for ARCore Geospatial
-                                                        API, evaluating visual
-                                                        localization accuracy,
-                                                        scalability, and
-                                                        deployment feasibility.
-                                                    </span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
                             </div>
                         </div>
 

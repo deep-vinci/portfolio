@@ -6,7 +6,7 @@ import { AnimatePresence, motion } from "framer-motion";
 export default function HoverBubble({
     children,
     text = "open my github",
-    href = "https://github.com/deep-vinci",
+    href,
     className = "",
 }: {
     children: React.ReactNode;
@@ -18,12 +18,17 @@ export default function HoverBubble({
 
     return (
         <div
-            className={`relative cursor-pointer ${className}`}
+            className={`relative ${href ? "cursor-pointer" : ""} ${className}`}
             onMouseMove={(e) => {
                 setPos({ x: e.clientX, y: e.clientY });
             }}
             onMouseLeave={() => setPos(null)}
-            onClick={() => window.open(href, "_blank", "noopener,noreferrer")}
+            onClick={
+                href
+                    ? () =>
+                          window.open(href, "_blank", "noopener,noreferrer")
+                    : undefined
+            }
         >
             {children}
 
@@ -38,8 +43,11 @@ export default function HoverBubble({
                             stiffness: 500,
                             damping: 26,
                         }}
-                        className="pointer-events-none fixed z-40 bg-[#f2f2f2] text-[#111111] text-xs font-mono font-bold tracking-wide px-3.5 py-2 shadow-lg shadow-black/50 whitespace-nowrap rounded-2xl rounded-bl-none origin-bottom-left"
-                        style={{ left: pos.x + 5, top: pos.y - 40 }}
+                        className="pointer-events-none fixed z-40 bg-[#f2f2f2] text-[#111111] text-sm font-mono font-bold tracking-wide px-3.5 py-2 shadow-lg shadow-black/50 max-w-[220px] rounded-2xl rounded-bl-none origin-bottom-left"
+                        style={{
+                            left: pos.x + 5,
+                            bottom: window.innerHeight - pos.y + 8,
+                        }}
                     >
                         {text}
                     </motion.div>
