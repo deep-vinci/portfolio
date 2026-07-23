@@ -2,6 +2,7 @@
 
 import { motion } from "motion/react";
 import HoverBubble from "./heatmap-hover";
+import ContactModal from "./contact-modal";
 
 export default function HomeClient({
     children,
@@ -20,26 +21,61 @@ export default function HomeClient({
                     />
                 </div>
                 <div className="flex gap-5">
-                    <a
-                        href="/cv"
-                        target="_blank"
-                        rel="noreferrer"
-                        className="bg-[white] text-black px-5 py-2.5 rounded-full font-bold text-sm tracking-wide hover:bg-[white] transition flex items-center gap-3 shadow-lg shadow-[#10b981]/20"
-                    >
-                        Resume
-                    </a>
-                    <a
-                        href="https://cal.com/deepvinci/15min"
-                        target="_blank"
-                        rel="noreferrer"
-                        className="bg-[#10b981] text-white px-5 py-2.5 rounded-full font-bold text-sm tracking-wide hover:bg-[#059669] transition flex items-center gap-3 shadow-lg shadow-[#10b981]/20"
-                    >
-                        Get in touch
-                        <div className="flex items-center gap-1.5 bg-white/20 px-2 py-1 rounded-full">
-                            <div className="w-1.5 h-1.5 bg-white rounded-full"></div>
-                            <div className="w-1.5 h-1.5 bg-white rounded-full"></div>
-                        </div>
-                    </a>
+                    <div className="flex items-center bg-white rounded-full shadow-lg shadow-black/20 overflow-hidden">
+                        <motion.a
+                            whileHover={{ scale: 1.03 }}
+                            whileTap={{ scale: 0.97 }}
+                            href="/cv"
+                            target="_blank"
+                            rel="noreferrer"
+                            aria-label="View resume (opens in new tab)"
+                            className="text-black pl-5 pr-4 py-2.5 font-bold text-sm tracking-wide hover:bg-gray-200 transition-colors flex items-center gap-2"
+                        >
+                            Resume
+                            {/* External-link arrow: opens in new tab, doesn't download */}
+                            <svg
+                                width="12"
+                                height="12"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                                strokeWidth="2.5"
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                aria-hidden="true"
+                            >
+                                <line x1="7" y1="17" x2="17" y2="7" />
+                                <polyline points="8 7 17 7 17 16" />
+                            </svg>
+                        </motion.a>
+                        <span className="w-px h-5 bg-gray-300" aria-hidden="true"></span>
+                        <motion.a
+                            whileHover={{ scale: 1.03 }}
+                            whileTap={{ scale: 0.97 }}
+                            href="/Deepak_Jha_Resume_jun.pdf"
+                            download="Deepak_Jha_Resume.pdf"
+                            aria-label="Download resume as PDF"
+                            title="Download PDF"
+                            className="text-black px-3.5 py-3 hover:bg-gray-200 transition-colors flex items-center"
+                        >
+                            <svg
+                                width="14"
+                                height="14"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                                strokeWidth="2.5"
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                aria-hidden="true"
+                            >
+                                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                                <polyline points="7 10 12 15 17 10" />
+                                <line x1="12" y1="15" x2="12" y2="3" />
+                            </svg>
+                        </motion.a>
+                    </div>
+                    <ContactModal />
                 </div>
             </div>
 
@@ -333,21 +369,21 @@ export default function HomeClient({
                                             height="40"
                                             viewBox="0 0 24 24"
                                             fill="none"
-                                            stroke="#34d399"
+                                            stroke="#facc15"
                                             strokeWidth="1"
                                             strokeLinecap="round"
                                             strokeLinejoin="round"
                                         >
-                                            <circle
-                                                cx="12"
-                                                cy="8"
-                                                r="6"
-                                            ></circle>
-                                            <path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"></path>
+                                            <path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"></path>
+                                            <path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"></path>
+                                            <path d="M4 22h16"></path>
+                                            <path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"></path>
+                                            <path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"></path>
+                                            <path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"></path>
                                         </svg>
                                     </div>
-                                    <div className="text-[#34d399] font-mono text-xs font-bold tracking-widest mb-3 uppercase flex items-center gap-2">
-                                        <span className="w-1.5 h-1.5 rounded-full bg-[#34d399] animate-pulse"></span>
+                                    <div className="text-[#facc15] font-mono text-xs font-bold tracking-widest mb-3 uppercase flex items-center gap-2">
+                                        <span className="w-1.5 h-1.5 rounded-full bg-[#facc15] animate-pulse"></span>
                                         Environment Hackathon '26
                                     </div>
                                     <h5 className="text-white text-lg font-bold mb-2">
@@ -373,21 +409,21 @@ export default function HomeClient({
                                             height="40"
                                             viewBox="0 0 24 24"
                                             fill="none"
-                                            stroke="#10b981"
+                                            stroke="#facc15"
                                             strokeWidth="1"
                                             strokeLinecap="round"
                                             strokeLinejoin="round"
                                         >
-                                            <path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"></path>
-                                            <path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"></path>
-                                            <path d="M4 22h16"></path>
-                                            <path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"></path>
-                                            <path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"></path>
-                                            <path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"></path>
+                                            <circle
+                                                cx="12"
+                                                cy="8"
+                                                r="6"
+                                            ></circle>
+                                            <path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"></path>
                                         </svg>
                                     </div>
-                                    <div className="text-[#10b981] font-mono text-xs font-bold tracking-widest mb-3 uppercase flex items-center gap-2">
-                                        <span className="w-1.5 h-1.5 rounded-full bg-[#10b981] animate-pulse"></span>
+                                    <div className="text-[#facc15] font-mono text-xs font-bold tracking-widest mb-3 uppercase flex items-center gap-2">
+                                        <span className="w-1.5 h-1.5 rounded-full bg-[#facc15] animate-pulse"></span>
                                         SIH '25
                                     </div>
                                     <h5 className="text-white text-lg font-bold mb-2">

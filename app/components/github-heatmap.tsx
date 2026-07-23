@@ -14,13 +14,17 @@ const GAP = 3;
 type Contribution = { date: string; count: number; level: number };
 
 async function fetchContributions(username: string): Promise<Contribution[]> {
-    const res = await fetch(
-        `https://github-contributions-api.jogruber.de/v4/${username}?y=last`,
-        { next: { revalidate: 86400 } },
-    );
-    if (!res.ok) return [];
-    const data = await res.json();
-    return data.contributions ?? [];
+    try {
+        const res = await fetch(
+            `https://github-contributions-api.jogruber.de/v4/${username}?y=last`,
+            { next: { revalidate: 86400 } },
+        );
+        if (!res.ok) return [];
+        const data = await res.json();
+        return data.contributions ?? [];
+    } catch {
+        return [];
+    }
 }
 
 export default async function GitHubHeatmap({

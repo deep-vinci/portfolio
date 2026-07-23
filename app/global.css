@@ -141,7 +141,6 @@ pre {
     -ms-overflow-style: none;
     scrollbar-width: none;
 }
-
 /* Remove Safari input shadow on mobile */
 input[type='text'],
 input[type='email'] {
