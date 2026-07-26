@@ -33,15 +33,15 @@ function BlogSkeleton() {
             {[1, 2, 3].map((i) => (
                 <div
                     key={i}
-                    className="flex justify-start gap-4 my-4 animate-pulse"
+                    className="flex items-start gap-3 sm:gap-5 my-4 animate-pulse"
                 >
-                    <div className="shrink-0 w-32 h-20 bg-neutral-200 dark:bg-neutral-800 rounded-lg"></div>
-                    <div className="flex-1 space-y-2">
+                    <div className="shrink-0 w-16 h-12 sm:w-24 sm:h-16 bg-neutral-200 dark:bg-neutral-800 rounded-lg"></div>
+                    <div className="flex-1 min-w-0 space-y-2">
                         <div className="h-5 bg-neutral-200 dark:bg-neutral-800 rounded w-3/4"></div>
                         <div className="h-4 bg-neutral-200 dark:bg-neutral-800 rounded w-full"></div>
                         <div className="h-4 bg-neutral-200 dark:bg-neutral-800 rounded w-5/6"></div>
                     </div>
-                    <div className="shrink-0 w-20 h-4 bg-neutral-200 dark:bg-neutral-800 rounded ml-auto"></div>
+                    <div className="hidden sm:block shrink-0 w-20 h-4 bg-neutral-200 dark:bg-neutral-800 rounded ml-auto"></div>
                 </div>
             ))}
         </div>
@@ -132,13 +132,13 @@ export default function BlogPosts() {
                     .map((post, index) => (
                         <Link
                             key={index}
-                            className="flex justify-start gap-5 my-6 cursor-pointer hover:bg-[#181818] p-4 -ml-4 rounded-xl transition-all duration-300 relative group"
+                            className="flex items-start gap-3 sm:gap-5 my-3 sm:my-6 cursor-pointer hover:bg-[#181818] p-3 sm:p-4 -mx-3 sm:mx-0 sm:-ml-4 rounded-xl transition-all duration-300 relative group"
                             href={post.url}
                             target="_blank"
                             rel="noopener noreferrer"
                         >
                             {post.image ? (
-                                <div className="shrink-0 w-24 h-16 rounded-lg overflow-hidden border border-[#2a2a2a] bg-[#0e0e0e] flex items-center justify-center">
+                                <div className="shrink-0 w-16 h-12 sm:w-24 sm:h-16 rounded-lg overflow-hidden border border-[#2a2a2a] bg-[#0e0e0e] flex items-center justify-center">
                                     <img
                                         src={post.image}
                                         alt={post.title}
@@ -146,7 +146,7 @@ export default function BlogPosts() {
                                     />
                                 </div>
                             ) : (
-                                <div className="shrink-0 w-24 h-16 bg-[#181818] border border-[#2a2a2a] rounded-lg flex items-center justify-center text-[#555] group-hover:text-[#10b981] transition-colors">
+                                <div className="shrink-0 w-16 h-12 sm:w-24 sm:h-16 bg-[#181818] border border-[#2a2a2a] rounded-lg flex items-center justify-center text-[#555] group-hover:text-[#10b981] transition-colors">
                                     <svg
                                         className="w-6 h-6"
                                         fill="none"
@@ -162,17 +162,22 @@ export default function BlogPosts() {
                                     </svg>
                                 </div>
                             )}
-                            <div className="flex flex-col justify-center flex-1 min-w-0 pr-4">
-                                <h3 className="font-bold text-lg text-white group-hover:text-[#10b981] transition-colors line-clamp-1">
+                            <div className="flex flex-col justify-center flex-1 min-w-0 sm:pr-4">
+                                <h3 className="font-bold text-base sm:text-lg text-white group-hover:text-[#10b981] transition-colors line-clamp-2 sm:line-clamp-1">
                                     {post.title}
                                 </h3>
                                 {post.description && (
-                                    <p className="text-sm text-[#898989] font-light mt-1 max-w-xl leading-relaxed line-clamp-2">
+                                    <p className="text-xs sm:text-sm text-[#898989] font-light mt-1 max-w-xl leading-relaxed line-clamp-2">
                                         {post.description}
                                     </p>
                                 )}
+                                {/* Below sm there is no room for a date column,
+                                    so it rides under the copy instead */}
+                                <div className="sm:hidden mt-2 text-[10px] font-mono font-bold tracking-widest text-[#555]">
+                                    {formatDate(post.publishedAt)}
+                                </div>
                             </div>
-                            <div className="shrink-0 mt-2 ml-auto text-xs font-mono font-bold tracking-widest text-[#555] group-hover:text-white transition-colors">
+                            <div className="hidden sm:block shrink-0 mt-2 ml-auto text-xs font-mono font-bold tracking-widest text-[#555] group-hover:text-white transition-colors whitespace-nowrap">
                                 {formatDate(post.publishedAt)}
                             </div>
                         </Link>

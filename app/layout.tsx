@@ -5,6 +5,15 @@ import { Navbar } from "./components/nav";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 
+export const viewport = {
+    width: "device-width",
+    initialScale: 1,
+    // Let content flow under the notch/rounded corners; safe-area insets below
+    // keep the fixed chrome clear of them.
+    viewportFit: "cover" as const,
+    themeColor: "#0e0e0e",
+};
+
 export const metadata = {
     title: {
         default: "deepvinci's Portfolio",
@@ -48,7 +57,7 @@ export default function RootLayout({
                 GeistMono.variable
             )}
         >
-            <body className="antialiased w-full max-w-[1260px] mx-auto px-6 sm:px-8 mt-12 mb-24 overflow-x-hidden selection:bg-[#10b981] selection:text-white">
+            <body className="page-shell antialiased w-full max-w-[1260px] mx-auto mt-8 sm:mt-12 mb-28 sm:mb-24 overflow-x-hidden selection:bg-[#10b981] selection:text-white">
                 <main className="flex-auto min-w-0 flex flex-col">
                     <Navbar />
                     {children}

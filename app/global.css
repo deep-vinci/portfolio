@@ -31,7 +31,65 @@
 }
 
 html {
-    min-width: 360px;
+    /* No min-width: the layout must survive down to ~200px (watch browsers,
+       folded devices). Forcing a min-width made Chrome shrink-to-fit and
+       zoom the whole page out on anything narrower. */
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+}
+
+body {
+    /* Long unbroken tokens (URLs, tech names) must never widen the page */
+    overflow-wrap: break-word;
+}
+
+img,
+svg,
+video,
+canvas {
+    max-width: 100%;
+}
+
+/* Keep the page gutters clear of notches / rounded display corners while
+   never shrinking below the Tailwind-set padding. */
+.page-shell {
+    --gutter: 1rem;
+    padding-left: max(var(--gutter), env(safe-area-inset-left));
+    padding-right: max(var(--gutter), env(safe-area-inset-right));
+}
+
+@media (min-width: 380px) {
+    .page-shell {
+        --gutter: 1.25rem;
+    }
+}
+
+@media (min-width: 640px) {
+    .page-shell {
+        --gutter: 2rem;
+    }
+}
+
+/* Fixed chrome (top header, bottom nav) offsets for safe areas */
+.safe-top {
+    padding-top: env(safe-area-inset-top);
+}
+
+.safe-bottom {
+    bottom: max(1rem, env(safe-area-inset-bottom));
+}
+
+/* Respect users who ask for less motion */
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
 }
 
 .prose .anchor {

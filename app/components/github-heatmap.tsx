@@ -37,7 +37,7 @@ export default async function GitHubHeatmap({
     if (contributions.length === 0) {
         return (
             <div>
-                <h3 className="text-sm font-mono tracking-widest text-[#898989] uppercase mb-6 ">
+                <h3 className="text-xs sm:text-sm font-mono tracking-wider sm:tracking-widest text-[#898989] uppercase mb-4 sm:mb-6">
                     GITHUB ACTIVITY
                 </h3>
                 <p className="text-sm text-gray-500 dark:text-gray-400">
@@ -53,11 +53,11 @@ export default async function GitHubHeatmap({
 
     return (
         <>
-            <h3 className="text-sm font-mono tracking-widest text-[#898989] uppercase mb-6">
+            <h3 className="text-xs sm:text-sm font-mono tracking-wider sm:tracking-widest text-[#898989] uppercase mb-4 sm:mb-6">
                 GITHUB ACTIVITY
             </h3>
-            <HeatmapHover>
-                <div className="overflow-x-auto scrollbar-none">
+            <HeatmapHover href={`https://github.com/${username}`}>
+                <div className="overflow-x-auto overscroll-x-contain touch-pan-x scrollbar-none">
                 <svg
                     width={width}
                     height={height}

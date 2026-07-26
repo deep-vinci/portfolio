@@ -12,16 +12,19 @@ export default function HomeClient({
     return (
         <>
             {/* Top Fixed Header replicating the image */}
-            <div className="fixed top-0 left-0 w-full z-50 px-6 sm:px-8 py-4 flex justify-between items-center bg-[#0e0e0e]/80 backdrop-blur-md">
-                <div className="w-10 h-10 rounded-full overflow-hidden border border-[#2a2a2a]">
+            <div className="safe-top fixed top-0 left-0 w-full z-50 bg-[#0e0e0e]/80 backdrop-blur-md">
+                <div className="page-shell w-full max-w-[1260px] mx-auto py-3 sm:py-4 flex justify-between items-center gap-2">
+                <div className="w-9 h-9 sm:w-10 sm:h-10 shrink-0 rounded-full overflow-hidden border border-[#2a2a2a]">
                     <img
                         src="/pfp.jpg"
                         alt="Profile"
                         className="w-full h-full object-cover"
                     />
                 </div>
-                <div className="flex gap-5">
-                    <div className="flex items-center bg-white rounded-full shadow-lg shadow-black/20 overflow-hidden">
+                <div className="flex items-center gap-2 min-[400px]:gap-3 sm:gap-5 min-w-0">
+                    {/* shrink-0: the pill clips its own overflow, so letting
+                        flex compress it would silently cut the label off */}
+                    <div className="flex shrink-0 items-center bg-white rounded-full shadow-lg shadow-black/20 overflow-hidden">
                         <motion.a
                             whileHover={{ scale: 1.03 }}
                             whileTap={{ scale: 0.97 }}
@@ -29,13 +32,17 @@ export default function HomeClient({
                             target="_blank"
                             rel="noreferrer"
                             aria-label="View resume (opens in new tab)"
-                            className="text-black pl-5 pr-4 py-2.5 font-bold text-sm tracking-wide hover:bg-gray-200 transition-colors flex items-center gap-2"
+                            className="text-black pl-3 pr-2.5 py-2 min-[400px]:pl-5 min-[400px]:pr-4 min-[400px]:py-2.5 font-bold text-[11px] min-[400px]:text-sm tracking-wide hover:bg-gray-200 transition-colors flex items-center gap-1.5 min-[400px]:gap-2 whitespace-nowrap"
                         >
-                            Resume
+                            {/* Watch-class widths cannot fit "Resume" next to
+                                the contact CTA — abbreviate rather than clip */}
+                            <span className="min-[240px]:hidden">CV</span>
+                            <span className="hidden min-[240px]:inline">
+                                Resume
+                            </span>
                             {/* External-link arrow: opens in new tab, doesn't download */}
                             <svg
-                                width="12"
-                                height="12"
+                                className="w-2.5 h-2.5 min-[400px]:w-3 min-[400px]:h-3"
                                 viewBox="0 0 24 24"
                                 fill="none"
                                 stroke="currentColor"
@@ -48,7 +55,13 @@ export default function HomeClient({
                                 <polyline points="8 7 17 7 17 16" />
                             </svg>
                         </motion.a>
-                        <span className="w-px h-5 bg-gray-300" aria-hidden="true"></span>
+                        {/* Separate download affordance is a nicety — dropped
+                            below 480px, where the Resume link (which opens the
+                            same PDF) is all that fits. */}
+                        <span
+                            className="hidden min-[480px]:block w-px h-5 bg-gray-300"
+                            aria-hidden="true"
+                        ></span>
                         <motion.a
                             whileHover={{ scale: 1.03 }}
                             whileTap={{ scale: 0.97 }}
@@ -56,7 +69,7 @@ export default function HomeClient({
                             download="Deepak_Jha_Resume.pdf"
                             aria-label="Download resume as PDF"
                             title="Download PDF"
-                            className="text-black px-3.5 py-3 hover:bg-gray-200 transition-colors flex items-center"
+                            className="hidden min-[480px]:flex text-black px-3.5 py-3 hover:bg-gray-200 transition-colors items-center"
                         >
                             <svg
                                 width="14"
@@ -77,16 +90,19 @@ export default function HomeClient({
                     </div>
                     <ContactModal />
                 </div>
+                </div>
             </div>
 
             <motion.section
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5 }}
-                className="grid grid-cols-1 lg:grid-cols-[1fr_1fr] gap-10 lg:gap-20 items-start w-full relative"
+                className="grid grid-cols-1 lg:grid-cols-[1fr_1fr] gap-8 sm:gap-10 lg:gap-16 xl:gap-20 items-start w-full relative min-w-0"
             >
                 {/* Left Column */}
-                <div className="flex flex-col lg:sticky lg:top-24 lg:h-[calc(100vh-120px)] justify-between mt-10 pb-10">
+                {/* min-h (not h) so a short viewport lets the column grow
+                    instead of spilling its content out of the sticky box */}
+                <div className="flex flex-col min-w-0 lg:sticky lg:top-24 lg:min-h-[calc(100vh-120px)] justify-between mt-8 sm:mt-10 pb-6 sm:pb-10">
                     {/* Meta details */}
                     {/*<div className="grid grid-cols-[120px_1fr] md:grid-cols-[140px_1fr] gap-x-4 gap-y-3 text-sm text-[#898989] uppercase tracking-wider font-mono">
                         <span>TIMEZONE</span>{" "}
@@ -106,11 +122,11 @@ export default function HomeClient({
                             React, Next.js, Java, Python
                         </span>
                     </div>*/}
-                    <div className="mb">
-                        <h3 className="text-xl font-bold font-mono tracking-widest uppercase mb-6 text-white">
+                    <div>
+                        <h3 className="text-base min-[360px]:text-lg sm:text-xl font-bold font-mono tracking-wider sm:tracking-widest uppercase mb-4 sm:mb-6 text-white">
                             FIELDS OF WORK
                         </h3>
-                        <p className="text-[#a0a0a0] text-base md:text-lg leading-relaxed font-light">
+                        <p className="text-[#a0a0a0] text-sm min-[360px]:text-base md:text-lg leading-relaxed font-light">
                             I bridge the gap between complex backends and
                             intuitive mobile & web interfaces.
                         </p>
@@ -118,7 +134,7 @@ export default function HomeClient({
 
                     {/* Mobile: stacked two-tier layout */}
                     {/* Mobile: stacked two-tier layout */}
-                    <div className="sm:hidden flex flex-col gap-5 mb-12 mt-4 items-center w-full px-2">
+                    <div className="sm:hidden flex flex-col gap-4 mb-8 mt-4 items-center w-full">
                         {/* Browser screenshots row */}
                         <div className="flex gap-3 justify-center w-full">
                             <div className="w-[48%] aspect-[16/10] bg-[#1a1a1a] border border-[#2e2e2e] rounded-xl shadow-2xl flex flex-col overflow-hidden">
@@ -192,7 +208,10 @@ export default function HomeClient({
                         </div>
                     </div>
                     {/* Desktop sm+: fanned layout */}
-                    <div className="hidden sm:flex relative h-[260px] w-full mb-12 mt-4 justify-center items-center overflow-x-visible">
+                    {/* The fanned stack spans ~452px; the two-column lg layout
+                        gives the left column less than that until xl, so it is
+                        scaled rather than allowed to spill. */}
+                    <div className="hidden sm:flex relative h-[260px] w-full mb-8 lg:mb-12 mt-4 justify-center items-center lg:scale-[0.85] xl:scale-100">
                         {/* Desktop Card 1 - Left/Back */}
                         <div className="group absolute w-[252px] h-[158px] transform -rotate-[12deg] -translate-x-[100px] -translate-y-9 hover:z-[60]">
                         <div className="w-full h-full bg-[#1a1a1a] border border-[#2e2e2e] rounded-xl shadow-2xl group-hover:translate-y-4 transition duration-500 ease-out flex flex-col items-center justify-start overflow-hidden">
@@ -281,20 +300,20 @@ export default function HomeClient({
                         </div>
                         </div>
                     </div>
-                    <div className="mt-20 mb-10 lg:mt-auto">
+                    <div className="mt-8 sm:mt-12 mb-6 sm:mb-10 lg:mt-auto">
                         {/* Headline */}
-                        <h1 className="text-xl md:text-[1.5rem] font-bold tracking-tight mb-6 max-w-[90%] md:max-w-lg leading-[1.3] text-[#f2f2f2]">
+                        <h1 className="text-lg min-[360px]:text-xl md:text-[1.5rem] font-bold tracking-tight mb-5 sm:mb-6 max-w-full md:max-w-lg leading-[1.3] text-[#f2f2f2]">
                             Crafting high-performance Android apps and scalable
                             fullstack systems with a focus on deep engineering.
                         </h1>
 
                         {/* Buttons */}
-                        <div className="flex flex-wrap items-center gap-4">
+                        <div className="flex flex-wrap items-center gap-2.5 sm:gap-4">
                             <a
                                 href="https://linkedin.com/in/deepakwork"
                                 target="_blank"
                                 rel="noreferrer"
-                                className="flex items-center justify-center gap-2 px-6 py-2.5 bg-white text-black rounded-full font-bold text-xs tracking-wide hover:bg-gray-200 transition uppercase"
+                                className="flex items-center justify-center gap-2 px-4 sm:px-6 py-2.5 bg-white text-black rounded-full font-bold text-[11px] sm:text-xs tracking-wide hover:bg-gray-200 transition uppercase whitespace-nowrap"
                             >
                                 <svg
                                     width="14"
@@ -310,7 +329,7 @@ export default function HomeClient({
                                 href="https://github.com/deep-vinci"
                                 target="_blank"
                                 rel="noreferrer"
-                                className="flex items-center justify-center gap-2 px-6 py-2.5 bg-white text-black rounded-full font-bold text-xs tracking-wide hover:bg-gray-200 transition uppercase"
+                                className="flex items-center justify-center gap-2 px-4 sm:px-6 py-2.5 bg-white text-black rounded-full font-bold text-[11px] sm:text-xs tracking-wide hover:bg-gray-200 transition uppercase whitespace-nowrap"
                             >
                                 <svg
                                     width="14"
@@ -324,7 +343,7 @@ export default function HomeClient({
                             </a>
                             <a
                                 href="mailto:deepakworkpc@gmail.com"
-                                className="flex items-center justify-center gap-2 px-6 py-2.5 bg-white text-black rounded-full font-bold text-xs tracking-wide hover:bg-gray-200 transition uppercase"
+                                className="flex items-center justify-center gap-2 px-4 sm:px-6 py-2.5 bg-white text-black rounded-full font-bold text-[11px] sm:text-xs tracking-wide hover:bg-gray-200 transition uppercase whitespace-nowrap"
                             >
                                 <svg
                                     width="14"
@@ -346,18 +365,18 @@ export default function HomeClient({
                 </div>
 
                 {/* Right Column */}
-                <div className="flex flex-col md:pt-16 pb-20 overflow-hidden">
-                    <div className="w-full lg:max-w-xl lg:ml-auto">
+                <div className="flex flex-col min-w-0 md:pt-16 pb-10 sm:pb-20 overflow-hidden">
+                    <div className="w-full min-w-0 lg:max-w-xl lg:ml-auto">
                         {children}
 
                         {/* Experience - first thing recruiters see */}
-                        <div className="mb-12 pt-5">
-                            <h4 className="text-sm font-mono tracking-widest text-[#898989] uppercase mb-8">
+                        <div className="mb-10 sm:mb-12 pt-4 sm:pt-5">
+                            <h4 className="text-xs sm:text-sm font-mono tracking-wider sm:tracking-widest text-[#898989] uppercase mb-5 sm:mb-8">
                                 EXPERIENCE
                             </h4>
                             <div className="flex flex-col gap-6">
                                 <HoverBubble text="currently interning here, building cool industrial softwares">
-                                <div className="group relative bg-[#111] border border-[#222] hover:border-[#333] rounded-2xl p-6 transition-all duration-300 cursor-pointer overflow-hidden">
+                                <div className="group relative bg-[#111] border border-[#222] hover:border-[#333] rounded-2xl p-4 sm:p-6 transition-all duration-300 cursor-pointer overflow-hidden">
                                     <div className="flex justify-between items-start mb-2">
                                         <div>
                                             <h5 className="text-white text-lg font-bold mb-1">
@@ -397,7 +416,7 @@ export default function HomeClient({
                                 </div>
                                 </HoverBubble>
                                 <HoverBubble text="worked with ar technologies in kotlin and java">
-                                <div className="group relative bg-[#111] border border-[#222] hover:border-[#333] rounded-2xl p-6 transition-all duration-300 cursor-pointer overflow-hidden">
+                                <div className="group relative bg-[#111] border border-[#222] hover:border-[#333] rounded-2xl p-4 sm:p-6 transition-all duration-300 cursor-pointer overflow-hidden">
                                     <div className="flex justify-between items-start mb-2">
                                         <div>
                                             <h5 className="text-white text-lg font-bold mb-1">
@@ -508,8 +527,8 @@ export default function HomeClient({
                         </div>
 
                         {/* Achievements */}
-                        <div className="mb-12 pt-5 ">
-                            <h4 className="text-sm font-mono tracking-widest text-[#898989] uppercase mb-8">
+                        <div className="mb-10 sm:mb-12 pt-4 sm:pt-5">
+                            <h4 className="text-xs sm:text-sm font-mono tracking-wider sm:tracking-widest text-[#898989] uppercase mb-5 sm:mb-8">
                                 ACHIEVEMENTS
                             </h4>
                             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -517,7 +536,7 @@ export default function HomeClient({
                                     text="check out linkedin post"
                                     href="https://www.linkedin.com/feed/update/urn:li:activity:7471729453610573824/"
                                 >
-                                <div className="relative group bg-[#111] border border-[#222] rounded-2xl p-5 overflow-hidden hover:border-[#333] transition-colors">
+                                <div className="relative group bg-[#111] border border-[#222] rounded-2xl p-4 sm:p-5 overflow-hidden hover:border-[#333] transition-colors">
                                     <div className="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
                                         <svg
                                             width="40"
@@ -537,7 +556,7 @@ export default function HomeClient({
                                             <path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"></path>
                                         </svg>
                                     </div>
-                                    <div className="text-[#facc15] font-mono text-xs font-bold tracking-widest mb-3 uppercase flex items-center gap-2">
+                                    <div className="text-[#facc15] font-mono text-[10px] sm:text-xs font-bold tracking-wider sm:tracking-widest mb-3 pr-8 uppercase flex items-center gap-2">
                                         <span className="w-1.5 h-1.5 rounded-full bg-[#facc15] animate-pulse"></span>
                                         Environment Hackathon '26
                                     </div>
@@ -557,7 +576,7 @@ export default function HomeClient({
                                     text="view certificate"
                                     href="/certificates/sih-25.pdf"
                                 >
-                                <div className="relative group bg-[#111] border border-[#222] rounded-2xl p-5 overflow-hidden hover:border-[#333] transition-colors">
+                                <div className="relative group bg-[#111] border border-[#222] rounded-2xl p-4 sm:p-5 overflow-hidden hover:border-[#333] transition-colors">
                                     <div className="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
                                         <svg
                                             width="40"
@@ -577,7 +596,7 @@ export default function HomeClient({
                                             <path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"></path>
                                         </svg>
                                     </div>
-                                    <div className="text-[#facc15] font-mono text-xs font-bold tracking-widest mb-3 uppercase flex items-center gap-2">
+                                    <div className="text-[#facc15] font-mono text-[10px] sm:text-xs font-bold tracking-wider sm:tracking-widest mb-3 pr-8 uppercase flex items-center gap-2">
                                         <span className="w-1.5 h-1.5 rounded-full bg-[#facc15] animate-pulse"></span>
                                         SIH '25
                                     </div>
@@ -596,7 +615,7 @@ export default function HomeClient({
                                     text="check out linkedin post"
                                     href="https://www.linkedin.com/posts/deepakwork_techexpo2026-androidapp-development-activity-7425721838833385472-Kbjt"
                                 >
-                                <div className="relative group bg-[#111] border border-[#222] rounded-2xl p-5 overflow-hidden hover:border-[#333] transition-colors">
+                                <div className="relative group bg-[#111] border border-[#222] rounded-2xl p-4 sm:p-5 overflow-hidden hover:border-[#333] transition-colors">
                                     <div className="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
                                         <svg
                                             width="40"
@@ -611,7 +630,7 @@ export default function HomeClient({
                                             <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
                                         </svg>
                                     </div>
-                                    <div className="text-[#facc15] font-mono text-xs font-bold tracking-widest mb-3 uppercase flex items-center gap-2">
+                                    <div className="text-[#facc15] font-mono text-[10px] sm:text-xs font-bold tracking-wider sm:tracking-widest mb-3 pr-8 uppercase flex items-center gap-2">
                                         <span className="w-1.5 h-1.5 rounded-full bg-[#facc15] animate-pulse"></span>
                                         Tech Expo '26
                                     </div>
@@ -629,11 +648,11 @@ export default function HomeClient({
                         </div>
 
                         {/* Stacks */}
-                        <div className="mb-12 pt-12">
-                            <h4 className="text-sm font-mono tracking-widest text-[#898989] uppercase mb-8">
+                        <div className="mb-10 sm:mb-12 pt-8 sm:pt-12">
+                            <h4 className="text-xs sm:text-sm font-mono tracking-wider sm:tracking-widest text-[#898989] uppercase mb-5 sm:mb-8">
                                 STACKS
                             </h4>
-                            <div className="grid grid-cols-2 lg:grid-cols-3 gap-y-6 gap-x-6 text-sm font-medium">
+                            <div className="grid grid-cols-1 min-[330px]:grid-cols-2 xl:grid-cols-3 gap-y-4 sm:gap-y-6 gap-x-3 sm:gap-x-6 text-xs sm:text-sm font-medium">
                                 {[
                                     {
                                         name: "React",
@@ -675,29 +694,31 @@ export default function HomeClient({
                                 ].map((stack) => (
                                     <div
                                         key={stack.name}
-                                        className="flex items-center gap-3 text-[#d4d4d4] group cursor-default"
+                                        className="flex items-center gap-2.5 sm:gap-3 min-w-0 text-[#d4d4d4] group cursor-default"
                                     >
-                                        <div className="w-10 h-10 rounded-xl bg-[#141414] border border-[#262626] flex items-center justify-center shadow-sm group-hover:border-[#333] group-hover:bg-[#1a1a1a] transition-all">
+                                        <div className="shrink-0 w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-[#141414] border border-[#262626] flex items-center justify-center shadow-sm group-hover:border-[#333] group-hover:bg-[#1a1a1a] transition-all">
                                             <img
                                                 src={stack.icon}
                                                 alt={stack.name}
                                                 className={`w-5 h-5 object-contain ${stack.invert ? "invert opacity-90" : ""}`}
                                             />
                                         </div>
-                                        <span>{stack.name}</span>
+                                        <span className="min-w-0 truncate">
+                                            {stack.name}
+                                        </span>
                                     </div>
                                 ))}
                             </div>
                         </div>
 
                         {/* Domains */}
-                        <div className="mb-12 pt-12">
-                            <h4 className="text-sm font-mono tracking-widest text-[#898989] uppercase mb-8">
+                        <div className="mb-10 sm:mb-12 pt-8 sm:pt-12">
+                            <h4 className="text-xs sm:text-sm font-mono tracking-wider sm:tracking-widest text-[#898989] uppercase mb-5 sm:mb-8">
                                 DOMAINS I'VE SHIPPED IN
                             </h4>
-                            <div className="grid grid-cols-2 lg:grid-cols-3 gap-y-6 gap-x-6 text-sm font-medium">
-                                <div className="flex items-center gap-3 text-[#d4d4d4]">
-                                    <span className="text-[#888] flex items-center justify-center">
+                            <div className="grid grid-cols-1 min-[330px]:grid-cols-2 xl:grid-cols-3 gap-y-4 sm:gap-y-6 gap-x-3 sm:gap-x-6 text-xs sm:text-sm font-medium">
+                                <div className="flex items-center gap-2.5 sm:gap-3 min-w-0 text-[#d4d4d4]">
+                                    <span className="shrink-0 text-[#888] flex items-center justify-center">
                                         <svg
                                             width="20"
                                             height="20"
@@ -720,8 +741,8 @@ export default function HomeClient({
                                     </span>
                                     AI & Systems
                                 </div>
-                                <div className="flex items-center gap-3 text-[#d4d4d4]">
-                                    <span className="text-[#888] flex items-center justify-center">
+                                <div className="flex items-center gap-2.5 sm:gap-3 min-w-0 text-[#d4d4d4]">
+                                    <span className="shrink-0 text-[#888] flex items-center justify-center">
                                         <svg
                                             width="20"
                                             height="20"
@@ -737,8 +758,8 @@ export default function HomeClient({
                                     </span>
                                     Healthcare (MES)
                                 </div>
-                                <div className="flex items-center gap-3 text-[#d4d4d4]">
-                                    <span className="text-[#888] flex items-center justify-center">
+                                <div className="flex items-center gap-2.5 sm:gap-3 min-w-0 text-[#d4d4d4]">
+                                    <span className="shrink-0 text-[#888] flex items-center justify-center">
                                         <svg
                                             width="20"
                                             height="20"
@@ -766,8 +787,8 @@ export default function HomeClient({
                                     </span>
                                     Navigation (GIS)
                                 </div>
-                                <div className="flex items-center gap-3 text-[#d4d4d4]">
-                                    <span className="text-[#888] flex items-center justify-center">
+                                <div className="flex items-center gap-2.5 sm:gap-3 min-w-0 text-[#d4d4d4]">
+                                    <span className="shrink-0 text-[#888] flex items-center justify-center">
                                         <svg
                                             width="20"
                                             height="20"
@@ -800,8 +821,8 @@ export default function HomeClient({
                                     </span>
                                     Data Vizualization
                                 </div>
-                                <div className="flex items-center gap-3 text-[#d4d4d4]">
-                                    <span className="text-[#888] flex items-center justify-center">
+                                <div className="flex items-center gap-2.5 sm:gap-3 min-w-0 text-[#d4d4d4]">
+                                    <span className="shrink-0 text-[#888] flex items-center justify-center">
                                         <svg
                                             width="20"
                                             height="20"
@@ -830,8 +851,8 @@ export default function HomeClient({
                                     </span>
                                     Mobile Platforms
                                 </div>
-                                <div className="flex items-center gap-3 text-[#d4d4d4]">
-                                    <span className="text-[#888] flex items-center justify-center">
+                                <div className="flex items-center gap-2.5 sm:gap-3 min-w-0 text-[#d4d4d4]">
+                                    <span className="shrink-0 text-[#888] flex items-center justify-center">
                                         <svg
                                             width="20"
                                             height="20"

@@ -211,10 +211,10 @@ export default function Projects() {
         <>
             {/* Header */}
             <div className="mb-8">
-                <h1 className="text-3xl font-bold font-mono tracking-widest uppercase mb-4 text-[#f2f2f2]">
+                <h1 className="text-2xl sm:text-3xl font-bold font-mono tracking-wider sm:tracking-widest uppercase mb-3 sm:mb-4 text-[#f2f2f2]">
                     WORK
                 </h1>
-                <p className="text-[#a0a0a0] text-base leading-relaxed font-light">
+                <p className="text-sm sm:text-base leading-relaxed font-light text-[#a0a0a0]">
                     A collection of products, experiments, and technical
                     deep-dives.
                 </p>
@@ -222,7 +222,7 @@ export default function Projects() {
 
             {/* Tab Selector */}
             <div className="mb-8">
-                <div className="inline-flex items-center gap-1 bg-[#0c0c0c] border border-[#222] rounded-full p-1">
+                <div className="flex items-center gap-1 bg-[#0c0c0c] border border-[#222] rounded-full p-1 w-full min-[400px]:w-auto min-[400px]:inline-flex">
                     {TABS.map((tab) => {
                         const isActive = activeTab === tab.id;
                         return (
@@ -230,8 +230,8 @@ export default function Projects() {
                                 key={tab.id}
                                 onClick={() => setActiveTab(tab.id)}
                                 className={`
-                                    relative flex items-center gap-2 px-4 py-1.5 rounded-full
-                                    text-[11px] font-mono font-bold tracking-widest uppercase
+                                    relative flex flex-1 min-w-0 min-[400px]:flex-none items-center justify-center gap-1 min-[340px]:gap-1.5 sm:gap-2 px-1.5 min-[340px]:px-2 sm:px-4 py-2 rounded-full
+                                    text-[10px] sm:text-[11px] font-mono font-bold tracking-wide min-[340px]:tracking-wider sm:tracking-widest uppercase
                                     transition-all duration-300 select-none
                                     ${
                                         isActive
@@ -254,10 +254,12 @@ export default function Projects() {
                                 {/* Label */}
                                 {tab.label}
 
-                                {/* Count Badge */}
+                                {/* Count Badge — dropped below 340px, where the
+                                    three tabs cannot otherwise fit. The count
+                                    still reads out in the line underneath. */}
                                 <span
                                     className={`
-                                        inline-flex items-center justify-center
+                                        hidden min-[340px]:inline-flex items-center justify-center
                                         min-w-[18px] h-[18px] px-1 rounded-full
                                         text-[9px] font-mono font-bold
                                         transition-all duration-300
@@ -310,7 +312,7 @@ export default function Projects() {
             </div>
 
             {/* Projects Grid */}
-            <div className="columns-1 sm:columns-2 gap-5 w-full">
+            <div className="columns-1 sm:columns-2 gap-4 sm:gap-5 w-full">
                 {filteredProjects.map((project) => {
                     const isUpcoming =
                         project.name === "Nexus Core" ||
@@ -319,7 +321,7 @@ export default function Projects() {
                     return (
                         <div
                             key={project.name}
-                            className={`break-inside-avoid mb-5 flex flex-col justify-between bg-[#131313] border border-[#222222] rounded-2xl p-6 transition-all duration-500 hover:bg-[#1a1a1a] hover:-translate-y-1 hover:border-[#333333] hover:shadow-2xl hover:shadow-[#10b981]/5 ${!isUpcoming ? "cursor-pointer" : "cursor-default"} group relative overflow-hidden`}
+                            className={`break-inside-avoid mb-4 sm:mb-5 flex flex-col justify-between bg-[#131313] border border-[#222222] rounded-2xl p-4 sm:p-6 transition-all duration-500 hover:bg-[#1a1a1a] hover:-translate-y-1 hover:border-[#333333] hover:shadow-2xl hover:shadow-[#10b981]/5 ${!isUpcoming ? "cursor-pointer" : "cursor-default"} group relative overflow-hidden`}
                             onClick={() => {
                                 if (project.url && !isUpcoming) {
                                     window.open(project.url, "_blank");
@@ -345,7 +347,7 @@ export default function Projects() {
                                 {project.screenshots &&
                                     project.screenshots.length === 1 &&
                                     !isUpcoming && (
-                                        <div className="-mx-6 -mt-6 mb-5 bg-[#0a0a0a] border-b border-[#1c1c1c] rounded-t-2xl overflow-hidden">
+                                        <div className="-mx-4 -mt-4 sm:-mx-6 sm:-mt-6 mb-4 sm:mb-5 bg-[#0a0a0a] border-b border-[#1c1c1c] rounded-t-2xl overflow-hidden">
                                             {/* Browser chrome bar */}
                                             <div className="flex items-center gap-1.5 px-3 h-7 bg-[#0e0e0e] border-b border-[#1a1a1a]">
                                                 <div className="w-2 h-2 rounded-full bg-[#2a2a2a]" />
@@ -369,7 +371,7 @@ export default function Projects() {
                                 {project.screenshots &&
                                     project.screenshots.length > 1 &&
                                     !isUpcoming && (
-                                        <div className="flex gap-2 -mx-6 -mt-6 mb-5 px-3 pt-3 pb-3 bg-[#0a0a0a] border-b border-[#1c1c1c] rounded-t-2xl overflow-hidden">
+                                        <div className="flex gap-2 -mx-4 -mt-4 sm:-mx-6 sm:-mt-6 mb-4 sm:mb-5 px-3 pt-3 pb-3 bg-[#0a0a0a] border-b border-[#1c1c1c] rounded-t-2xl overflow-hidden">
                                             {project.screenshots.map(
                                                 (src, i) => (
                                                     <div
@@ -394,7 +396,7 @@ export default function Projects() {
                                 >
                                     {/* Logo */}
                                     <div
-                                        className="shrink-0 size-12 bg-[#1a1a1a] bg-cover bg-center rounded-xl border border-[#2a2a2a] flex items-center justify-center font-bold text-xl text-[#555] group-hover:border-[#3a3a3a] transition-colors"
+                                        className="shrink-0 size-10 sm:size-12 bg-[#1a1a1a] bg-cover bg-center rounded-xl border border-[#2a2a2a] flex items-center justify-center font-bold text-xl text-[#555] group-hover:border-[#3a3a3a] transition-colors"
                                         style={
                                             project.logo
                                                 ? {
@@ -491,7 +493,7 @@ export default function Projects() {
 
                                 {/* Title */}
                                 <h3
-                                    className={`font-bold border-b border-[#222] pb-3 mb-3 text-lg text-white ${!isUpcoming ? "group-hover:text-[#10b981]" : "opacity-50 blur-sm"} transition-colors`}
+                                    className={`font-bold border-b border-[#222] pb-3 mb-3 text-base sm:text-lg text-white break-words ${!isUpcoming ? "group-hover:text-[#10b981]" : "opacity-50 blur-sm"} transition-colors`}
                                 >
                                     {project.name}
                                 </h3>

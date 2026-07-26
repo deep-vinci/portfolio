@@ -87,7 +87,11 @@ function Turnstile({ onToken }: { onToken: (token: string) => void }) {
     }, []);
 
     return (
-        <div className="origin-left scale-[0.833]">
+        // The Turnstile iframe has a hard 300x65 intrinsic size, so it is
+        // scaled down (not reflowed) to fit narrow screens. The outer box owns
+        // the post-scale footprint and clips, keeping it out of page layout.
+        <div className="relative w-full h-[35px] min-[340px]:h-[42px] min-[400px]:h-[48px] overflow-hidden">
+            <div className="absolute top-0 left-0 origin-top-left scale-[0.6] min-[340px]:scale-[0.72] min-[400px]:scale-[0.84]">
             {/* Wrapper is slightly smaller than the 300x65 widget and clips
                 overflow, hiding the widget's own border on all sides */}
             <div className="relative w-[296px] h-[57px] rounded-xl overflow-hidden">
@@ -126,6 +130,7 @@ function Turnstile({ onToken }: { onToken: (token: string) => void }) {
                     </div>
                 )}
             </div>
+            </div>
         </div>
     );
 }
@@ -141,6 +146,22 @@ export default function ContactModal() {
     const [mounted, setMounted] = useState(false);
 
     useEffect(() => setMounted(true), []);
+
+    // Lock the page behind the modal and wire up Escape. Without the lock,
+    // touch scrolling on mobile moves the page under the overlay.
+    useEffect(() => {
+        if (!open) return;
+        const onKey = (e: KeyboardEvent) => {
+            if (e.key === "Escape") setOpen(false);
+        };
+        const prev = document.body.style.overflow;
+        document.body.style.overflow = "hidden";
+        window.addEventListener("keydown", onKey);
+        return () => {
+            document.body.style.overflow = prev;
+            window.removeEventListener("keydown", onKey);
+        };
+    }, [open]);
 
     const openModal = () => {
         setCaptchaToken("");
@@ -192,11 +213,15 @@ export default function ContactModal() {
             <motion.button
                 layoutId="contact-morph"
                 onClick={openModal}
-                className="bg-[#10b981] text-white px-5 py-2.5 rounded-full font-bold text-sm tracking-wide hover:bg-[#059669] transition-colors flex items-center gap-3 shadow-lg shadow-[#10b981]/20 cursor-pointer"
+                aria-label="Get in touch"
+                className="bg-[#10b981] text-white px-2.5 min-[240px]:px-3 py-2 min-[400px]:px-5 min-[400px]:py-2.5 rounded-full font-bold text-[11px] min-[400px]:text-sm tracking-wide hover:bg-[#059669] transition-colors flex items-center gap-2 min-[400px]:gap-3 shadow-lg shadow-[#10b981]/20 cursor-pointer whitespace-nowrap shrink-0"
                 style={{ opacity: open ? 0 : 1 }}
             >
-                Get in touch
-                <div className="flex items-center gap-1.5 bg-white/20 px-2 py-1 rounded-full">
+                {/* Short label on watch/phone-sized viewports where the full
+                    phrase would push the header past the screen edge */}
+                <span className="min-[400px]:hidden">Contact</span>
+                <span className="hidden min-[400px]:inline">Get in touch</span>
+                <div className="hidden min-[400px]:flex items-center gap-1.5 bg-white/20 px-2 py-1 rounded-full">
                     <div className="w-1.5 h-1.5 bg-white rounded-full"></div>
                     <div className="w-1.5 h-1.5 bg-white rounded-full"></div>
                 </div>
@@ -217,7 +242,7 @@ export default function ContactModal() {
                                 />
 
                                 {/* Modal */}
-                                <div className="fixed inset-0 z-[100] flex items-center justify-center px-4 pointer-events-none">
+                                <div className="fixed inset-0 z-[100] flex items-center justify-center px-3 py-4 sm:px-4 sm:py-8 overflow-y-auto pointer-events-none">
                                     <motion.div
                                         layoutId="contact-morph"
                                         transition={{
@@ -225,7 +250,7 @@ export default function ContactModal() {
                                             stiffness: 300,
                                             damping: 30,
                                         }}
-                                        className="pointer-events-auto w-full max-w-lg bg-[#161616]/95 backdrop-blur-xl rounded-3xl p-6 sm:p-8 shadow-2xl shadow-black/60 overflow-hidden"
+                                        className="pointer-events-auto w-full max-w-lg my-auto max-h-[calc(100dvh-2rem)] overflow-y-auto overscroll-contain bg-[#161616]/95 backdrop-blur-xl rounded-2xl sm:rounded-3xl p-4 min-[400px]:p-6 sm:p-8 shadow-2xl shadow-black/60"
                                     >
                                         <motion.div
                                             initial={{ opacity: 0, y: 8 }}
@@ -233,14 +258,14 @@ export default function ContactModal() {
                                             exit={{ opacity: 0 }}
                                             transition={{ delay: 0.15 }}
                                         >
-                                            <div className="flex items-center justify-between mb-6">
-                                                <h3 className="text-white text-xl font-bold tracking-tight">
+                                            <div className="flex items-center justify-between gap-2 mb-4 sm:mb-6">
+                                                <h3 className="text-white text-lg sm:text-xl font-bold tracking-tight">
                                                     Get in touch
                                                 </h3>
                                                 <button
                                                     onClick={closeModal}
                                                     aria-label="Close"
-                                                    className="text-[#888] hover:text-white transition-colors w-8 h-8 flex items-center justify-center rounded-full hover:bg-[#1e1e1e]"
+                                                    className="shrink-0 text-[#888] hover:text-white transition-colors w-9 h-9 flex items-center justify-center rounded-full hover:bg-[#1e1e1e]"
                                                 >
                                                     <svg
                                                         width="16"
