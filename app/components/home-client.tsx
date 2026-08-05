@@ -574,7 +574,7 @@ export default function HomeClient({
 
                                 <HoverBubble
                                     text="view certificate"
-                                    href="/certificates/sih-25.pdf"
+                                    href="/certificates/sih-25"
                                 >
                                 <div className="relative group bg-[#111] border border-[#222] rounded-2xl p-4 sm:p-5 overflow-hidden hover:border-[#333] transition-colors">
                                     <div className="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
